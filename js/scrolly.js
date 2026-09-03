@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       petal.className = 'falling-petal';
 
       const size = Math.random() * 8 + 8; // 8px - 16px
-      const left = Math.random() * 100; // 0% - 100%
+      const left = Math.random() * 88 + 4; // 4% - 92%
       const duration = Math.random() * 6 + 7; // 7s - 13s
       const delay = Math.random() * 8; // 0s - 8s
       const color = colors[Math.floor(Math.random() * colors.length)];
