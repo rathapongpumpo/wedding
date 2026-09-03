@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Wedding Gallery | Film & Pei</title>
+  
+  <!-- Favicon on URL Tab -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pblue: '#A8D1E7',
+            ppink: '#F4C6CF',
+            pyellow: '#FDF1BA',
+            pbrown: '#D5BAA6',
+            'pbrown-dark': '#9A7B66',
+            cream: '#FAF7F2'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            alex: ['"Alex Brush"', 'cursive'],
+            thai: ['Prompt', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="paper-texture text-[#3A3532] antialiased min-h-screen pb-20">
+
+  <!-- Navigation Bar -->
+  <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-stone-200/80 px-4 py-3.5">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-stone-700 hover:text-[#9A7B66] text-xs font-semibold uppercase tracking-wider transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>กลับหน้าการ์ดเชิญ</span>
+      </a>
+      <span class="text-2xl font-alex text-[#9A7B66]">Film & Pei</span>
+      <a href="index.html#rsvp" class="py-1.5 px-4 rounded-full bg-[#9A7B66] text-white text-xs font-semibold tracking-wider hover:bg-[#856550] transition">
+        ตอบรับ RSVP
+      </a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="py-14 px-4 text-center max-w-2xl mx-auto space-y-3">
+    <p class="text-[11px] tracking-[0.3em] uppercase text-[#9A7B66] font-semibold">Pre-Wedding Photo Album</p>
+    <h1 class="text-4xl sm:text-5xl font-serif text-stone-900 font-normal">บันทึกความทรงจำแห่งรัก</h1>
+    <p class="text-xs sm:text-sm text-stone-500 font-light leading-relaxed">
+      ภาพถ่ายพรีเวดดิ้งของ ปรียาภรณ์ ชุมนุมราษฎร์ (ฟิล์ม) & รัฐพงษ์ พุ่มโพธิสาร (เป้)
+    </p>
+  </header>
+
+  <!-- Masonry Photo Grid (9 Photos) -->
+  <main class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      
+      <!-- Item 1 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7815.JPG', 'Moment 01')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7815.webp" type="image/webp">
+            <img src="images/IMG_7815.JPG" alt="Pre-wedding 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7816.JPG', 'Moment 02')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7816.webp" type="image/webp">
+            <img src="images/IMG_7816.JPG" alt="Pre-wedding 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7817.JPG', 'Moment 03')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7817.webp" type="image/webp">
+            <img src="images/IMG_7817.JPG" alt="Pre-wedding 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7818.JPG', 'Moment 04')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7818.webp" type="image/webp">
+            <img src="images/IMG_7818.JPG" alt="Pre-wedding 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7820.JPG', 'Moment 05')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7820.webp" type="image/webp">
+            <img src="images/IMG_7820.JPG" alt="Pre-wedding 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7821.JPG', 'Moment 06')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7821.webp" type="image/webp">
+            <img src="images/IMG_7821.JPG" alt="Pre-wedding 6" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7822.JPG', 'Moment 07')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7822.webp" type="image/webp">
+            <img src="images/IMG_7822.JPG" alt="Pre-wedding 7" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7827.JPG', 'Moment 08')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7827.webp" type="image/webp">
+            <img src="images/IMG_7827.JPG" alt="Pre-wedding 8" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="gallery-card group cursor-pointer relative overflow-hidden rounded-2xl shadow-md border border-stone-200 bg-white" onclick="openLightbox('images/IMG_7828.JPG', 'Moment 09')">
+        <div class="aspect-[3/4] overflow-hidden">
+          <picture>
+            <source srcset="images/optimized/IMG_7828.webp" type="image/webp">
+            <img src="images/IMG_7828.JPG" alt="Pre-wedding 9" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" loading="lazy">
+          </picture>
+        </div>
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4 text-white">
+          <span class="text-xs font-light">แตะเพื่อดูภาพขนาดเต็ม</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center p-4 backdrop-blur-md">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl font-light hover:text-stone-300 z-50">
+      &times;
+    </button>
+    <div class="max-w-4xl max-h-[85vh] relative flex flex-col items-center">
+      <img id="lightbox-img" src="" alt="Full view" class="max-h-[80vh] max-w-full rounded-lg shadow-2xl object-contain">
+      <p id="lightbox-caption" class="text-white/80 text-xs font-light mt-3 tracking-widest uppercase"></p>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      cap.textContent = caption;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.getElementById('lightbox-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox-modal') closeLightbox();
+    });
+  </script>
+</body>
+</html>

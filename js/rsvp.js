@@ -1,0 +1,161 @@
+// js/rsvp.js - Interactive RSVP & Blessing System for Film & Pei
+
+document.addEventListener('DOMContentLoaded', () => {
+  const rsvpForm = document.getElementById('rsvp-form');
+  const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
+  const attendeeCountContainer = document.getElementById('attendee-count-container');
+  const attendeeCountInput = document.getElementById('attendee-count');
+  const rsvpSuccessCard = document.getElementById('rsvp-success-card');
+  const rsvpFormContainer = document.getElementById('rsvp-form-container');
+  const guestWishesFeed = document.getElementById('guest-wishes-feed');
+  const exportCsvBtn = document.getElementById('export-rsvp-csv');
+
+  // 1. Dynamic Toggle for Attendee Count
+  attendanceRadios.forEach((radio) => {
+    radio.addEventListener('change', (e) => {
+      if (e.target.value === 'attending') {
+        attendeeCountContainer.classList.remove('hidden', 'opacity-0', '-translate-y-2');
+        attendeeCountContainer.classList.add('opacity-100', 'translate-y-0');
+        if (attendeeCountInput) attendeeCountInput.setAttribute('required', 'required');
+      } else {
+        attendeeCountContainer.classList.add('opacity-0', '-translate-y-2');
+        setTimeout(() => {
+          attendeeCountContainer.classList.add('hidden');
+        }, 200);
+        if (attendeeCountInput) attendeeCountInput.removeAttribute('required');
+      }
+    });
+  });
+
+  // 2. Load and Render Existing Wishes from LocalStorage
+  const STORAGE_KEY = 'wedding_rsvp_film_pei';
+  
+  function getStoredRSVP() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveRSVP(entry) {
+    const list = getStoredRSVP();
+    list.unshift(entry);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    renderWishes();
+  }
+
+  function renderWishes() {
+    if (!guestWishesFeed) return;
+    const list = getStoredRSVP();
+    
+    // Seed initial warm greetings if empty
+    const displayList = list.length > 0 ? list : [
+      {
+        name: "เพื่อนสนิท",
+        attendance: "attending",
+        count: 2,
+        wishes: "ขอแสดงความยินดีกับฟิล์มและเป้ด้วยนะครับ ขอให้รักกันยืนยาว มีความสุขมากๆ!",
+        date: "2026-09-01"
+      },
+      {
+        name: "ครอบครัวและญาติมิตร",
+        attendance: "attending",
+        count: 4,
+        wishes: "ยินดีกับทั้งคู่ด้วยอย่างยิ่ง ขอให้ครอบครัวอบอุ่นและเปี่ยมไปด้วยรอยยิ้มตลอดไป",
+        date: "2026-09-02"
+      }
+    ];
+
+    guestWishesFeed.innerHTML = displayList.filter(item => item.wishes && item.wishes.trim()).map(item => `
+      <div class="bg-white/80 p-4 rounded-xl border border-[#E8D5C4] shadow-sm space-y-1.5 transition hover:shadow-md">
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-stone-800 text-sm">${escapeHtml(item.name)}</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full ${item.attendance === 'attending' ? 'bg-[#EBF4F9] text-[#55829C]' : 'bg-stone-100 text-stone-500'} font-medium">
+            ${item.attendance === 'attending' ? `✓ ร่วมงาน (${item.count || 1} ท่าน)` : 'ส่งใจมาร่วม'}
+          </span>
+        </div>
+        <p class="text-xs text-stone-600 font-light leading-relaxed">"${escapeHtml(item.wishes)}"</p>
+      </div>
+    `).join('');
+  }
+
+  function escapeHtml(string) {
+    const div = document.createElement('div');
+    div.innerText = string;
+    return div.innerHTML;
+  }
+
+  // 3. Handle Form Submit
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('guest-name').value.trim();
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const count = attendance === 'attending' ? parseInt(attendeeCountInput.value || 1, 10) : 0;
+      const wishes = document.getElementById('guest-wishes').value.trim();
+
+      if (!name) {
+        alert('กรุณากรอกชื่อ-นามสกุลครับ');
+        return;
+      }
+
+      const newEntry = {
+        name,
+        attendance,
+        count,
+        wishes,
+        date: new Date().toISOString().split('T')[0]
+      };
+
+      saveRSVP(newEntry);
+
+      // Fire Pastel Confetti
+      if (typeof confetti !== 'undefined') {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.7 },
+          colors: ['#A8D1E7', '#F4C6CF', '#FDF1BA', '#D5BAA6', '#C7AA93']
+        });
+      }
+
+      // Show Success State
+      if (rsvpFormContainer && rsvpSuccessCard) {
+        rsvpFormContainer.classList.add('hidden');
+        rsvpSuccessCard.classList.remove('hidden');
+        document.getElementById('success-guest-name').textContent = name;
+      }
+    });
+  }
+
+  // 4. Export RSVP to CSV
+  if (exportCsvBtn) {
+    exportCsvBtn.addEventListener('click', () => {
+      const list = getStoredRSVP();
+      if (list.length === 0) {
+        alert('ยังไม่มีข้อมูลการตอบรับในระบบครับ');
+        return;
+      }
+
+      let csv = "\uFEFFชื่อ-นามสกุล,การเข้าร่วม,จำนวนผู้ติดตาม,คำอวยพร,วันที่ส่งข้อมูล\n";
+      list.forEach(row => {
+        const attText = row.attendance === 'attending' ? 'มาร่วมงาน' : 'ไม่สะดวก';
+        csv += `"${row.name}","${attText}","${row.count}","${(row.wishes || '').replace(/"/g, '""')}","${row.date}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `RSVP_Film_Pei_Wedding_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
+  renderWishes();
+});

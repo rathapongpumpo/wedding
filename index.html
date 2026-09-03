@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film & Pei | Wedding Invitation • 20.11.2026</title>
+  
+  <meta name="description" content="งานมงคลสมรสระหว่าง ปรียาภรณ์ ชุมนุมราษฎร์ (ฟิล์ม) & รัฐพงษ์ พุ่มโพธิสาร (เป้) วันที่ 20 พฤศจิกายน 2569 ณ โอละเข่ง">
+  <meta property="og:title" content="Film & Pei Wedding Invitation">
+  <meta property="og:image" content="images/IMG_7815.JPG">
+
+  <!-- Favicon on URL Tab -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: '#6B7A66',
+            'sage-dark': '#556350',
+            'sage-light': '#EBF0E9',
+            gold: '#C5A869',
+            'gold-dark': '#9E8347',
+            ivory: '#F8F5F0',
+            linen: '#EFEAE1',
+            charcoal: '#2D2B28',
+            pblue: '#A8D1E7',
+            ppink: '#F4C6CF',
+            pyellow: '#FDF1BA',
+            pbrown: '#D5BAA6'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Confetti Library for RSVP celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="luxury-backdrop text-[#2D2B28] antialiased min-h-screen py-0 sm:py-8">
+
+  <!-- Audio Player (sound.mp3) -->
+  <audio id="wedding-audio-player" src="sound.mp3" loop preload="auto"></audio>
+
+  <!-- Floating Audio Player -->
+  <button id="floating-music-btn" class="floating-audio-btn group" title="เปิด/ปิดเสียงเพลง" aria-label="Toggle Wedding Music">
+    <div class="flex items-center justify-center h-full">
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+    </div>
+  </button>
+
+  <!-- MAIN MOBILE-FIRST LUXURY CONTAINER (Matches exsam.avif presentation) -->
+  <div class="mobile-frame">
+    
+    <!-- ============================================================ -->
+    <!-- SCREEN 1: THE COVER & ENVELOPE (Sage Green Wash Backdrop)    -->
+    <!-- ============================================================ -->
+    <section class="screen-cover min-h-[720px] flex flex-col justify-between py-10 px-6 text-center relative">
+      
+      <!-- Top Decorative Foliage & Monogram -->
+      <div class="space-y-1.5 pt-2 z-10">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-white/80 font-medium font-modern">
+          You're cordially invited to
+        </p>
+        <p class="text-[11px] tracking-[0.25em] uppercase text-white/90 font-semibold font-modern">
+          The Wedding Of
+        </p>
+        <h1 class="text-5xl sm:text-6xl font-script text-white drop-shadow-sm pt-1">
+          Film &amp; Pei
+        </h1>
+        <p class="text-xs text-white/80 font-light font-thai tracking-wide">
+          ปรียาภรณ์ ชุมนุมราษฎร์ &amp; รัฐพงษ์ พุ่มโพธิสาร
+        </p>
+      </div>
+
+      <!-- Center Vector Lace Envelope with 3D Flap & Sliding Card -->
+      <div class="mt-12 mb-6 z-10">
+        <div id="wedding-envelope" class="envelope-container">
+          <div class="envelope-body">
+            
+            <!-- 1. 3D Flap Fold with French Scallop Lace, FP Monogram & Teardrop Pearl -->
+            <div class="envelope-flap-fold">
+              <svg viewBox="0 0 290 145" width="290" height="145" class="w-full h-full block">
+                <defs>
+                  <linearGradient id="flap-paper-hd" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FCFAF7"/>
+                    <stop offset="65%" stop-color="#F7F2EC"/>
+                    <stop offset="100%" stop-color="#EDE6DC"/>
+                  </linearGradient>
+
+                  <radialGradient id="pearl-hd" cx="38%" cy="32%" r="65%">
+                    <stop offset="0%" stop-color="#FFFFFF"/>
+                    <stop offset="30%" stop-color="#FDFBF7"/>
+                    <stop offset="65%" stop-color="#EDE4D6"/>
+                    <stop offset="90%" stop-color="#C5B7A4"/>
+                    <stop offset="100%" stop-color="#9A8C7A"/>
+                  </radialGradient>
+
+                  <filter id="p-shadow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feDropShadow dx="0" dy="2.5" stdDeviation="1.8" flood-color="#000000" flood-opacity="0.35"/>
+                  </filter>
+
+                  <!-- Scallop Lace Motif with Detailed Floral Stitching -->
+                  <g id="scallop-lace">
+                    <path d="M -13,0 C -13,8.5 -7,14 0,14 C 7,14 13,8.5 13,0 Z" fill="#FCFAF7" stroke="#E0D5C7" stroke-width="0.7"/>
+                    <circle cx="0" cy="5" r="3.2" fill="none" stroke="#DACFBF" stroke-width="0.4" stroke-dasharray="1,0.8"/>
+                    <circle cx="0" cy="5" r="1.1" fill="#E8DDD0"/>
+                    <circle cx="-7.5" cy="3.8" r="0.75" fill="#D5C7B5"/>
+                    <circle cx="-3.8" cy="8.2" r="0.75" fill="#D5C7B5"/>
+                    <circle cx="0" cy="9.8" r="0.85" fill="#D5C7B5"/>
+                    <circle cx="3.8" cy="8.2" r="0.75" fill="#D5C7B5"/>
+                    <circle cx="7.5" cy="3.8" r="0.75" fill="#D5C7B5"/>
+                  </g>
+                </defs>
+
+                <!-- Main Triangular Paper Flap -->
+                <polygon points="0,0 290,0 145,108" fill="url(#flap-paper-hd)" stroke="#E5DDD2" stroke-width="0.5"/>
+
+                <!-- Scallop Lace Border along both edges -->
+                <g id="lace-fringe">
+                  <path d="M 0,0 L 145,108 L 290,0" fill="none" stroke="#F6F0E7" stroke-width="8" opacity="0.7"/>
+                  <path d="M 0,0 L 145,108 L 290,0" fill="none" stroke="#D8CCBD" stroke-width="0.7" stroke-dasharray="2,2"/>
+
+                  <!-- Left Scallops -->
+                  <g transform="translate(7.2, 5.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(23.4, 17.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(39.5, 29.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(55.6, 41.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(71.7, 53.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(87.8, 65.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(103.9, 77.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(120.0, 89.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(136.1, 101.4) rotate(126.7)"><use href="#scallop-lace"/></g>
+
+                  <!-- Right Scallops -->
+                  <g transform="translate(282.8, 5.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(266.6, 17.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(250.5, 29.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(234.4, 41.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(218.3, 53.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(202.2, 65.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(186.1, 77.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(170.0, 89.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+                  <g transform="translate(153.9, 101.4) rotate(53.3)"><use href="#scallop-lace"/></g>
+
+                  <!-- Center Scallop below tip -->
+                  <g transform="translate(145, 107)"><use href="#scallop-lace"/></g>
+                </g>
+
+                <!-- Oval Cartouche Monogram (F P) -->
+                <g id="monogram-cartouche">
+                  <ellipse cx="145" cy="73" rx="21" ry="27" fill="#FCFAF7" stroke="#85684D" stroke-width="1.1" opacity="0.95"/>
+                  <ellipse cx="145" cy="73" rx="19" ry="25" fill="none" stroke="#85684D" stroke-width="0.4" stroke-dasharray="2.5,1.5" opacity="0.7"/>
+                  <text x="145" y="80" font-family="'Pinyon Script', cursive" font-size="29" fill="#85684D" text-anchor="middle" font-style="italic">FP</text>
+                </g>
+
+                <!-- Teardrop Pearl Pendant (Exact 3D Pearl at Flap Tip) -->
+                <g id="teardrop-pearl" filter="url(#p-shadow)">
+                  <path d="
+                    M 145,106
+                    C 138,114 133,122 136.5,128
+                    C 139.5,133 150.5,133 153.5,128
+                    C 157,122 152,114 145,106 Z
+                  " fill="url(#pearl-hd)" stroke="#D8CDBF" stroke-width="0.5"/>
+                  <ellipse cx="142" cy="119" rx="2.4" ry="4.5" transform="rotate(-15 142 119)" fill="#FFFFFF" opacity="0.9"/>
+                  <circle cx="143" cy="125" r="1.4" fill="#FFFFFF" opacity="0.6"/>
+                  <ellipse cx="145" cy="107" rx="2.5" ry="1.2" fill="#BAAA95"/>
+                </g>
+
+              </svg>
+            </div>
+
+            <!-- 2. Photo Card Sliding Out (Features Bride & Groom Portrait) -->
+            <div class="envelope-photo-card flex items-center justify-between p-2 border border-[#DFCA98]/60 bg-white">
+              <!-- Left: Portrait Image -->
+              <div class="w-[92px] h-[142px] rounded overflow-hidden relative shadow-inner border border-stone-200 bg-stone-100 shrink-0">
+                <img src="images/envelope_portrait_fit.jpg" alt="Film & Pei Portrait" class="w-full h-full object-cover">
+              </div>
+              <!-- Right: Invitation Details -->
+              <div class="flex-1 flex flex-col justify-center text-center pl-2 pr-1">
+                <p class="text-[8.5px] font-medium uppercase tracking-[0.2em] text-[#6B7A66] font-bold">Wedding Of</p>
+                <p class="text-xl font-alex text-[#2D2B28] my-0.5">Film &amp; Pei</p>
+                <div class="w-6 h-[1px] bg-[#C5A869] mx-auto my-1"></div>
+                <p class="text-[9.5px] font-serif-luxury font-bold text-stone-700 tracking-wider">20 . 11 . 2026</p>
+                <p class="text-[8.5px] font-thai text-stone-500 mt-0.5">ณ โอละเข่ง จ.นนทบุรี</p>
+                <span class="inline-block mt-2 text-[7.5px] font-medium uppercase tracking-widest text-[#6B7A66] border border-[#6B7A66]/30 px-2 py-0.5 rounded-full font-semibold">
+                  Save The Date
+                </span>
+              </div>
+            </div>
+
+            <!-- 3. Front Pocket (Vector Folds) -->
+            <div class="envelope-bottom-pocket">
+              <svg viewBox="0 0 290 185" width="290" height="185" class="w-full h-full block">
+                <defs>
+                  <linearGradient id="p-left" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FBF8F3"/>
+                    <stop offset="100%" stop-color="#EFE8DE"/>
+                  </linearGradient>
+                  <linearGradient id="p-right" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FBF8F3"/>
+                    <stop offset="100%" stop-color="#ECE5DA"/>
+                  </linearGradient>
+                  <linearGradient id="p-bottom" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#F8F3EC"/>
+                    <stop offset="100%" stop-color="#E8DFD2"/>
+                  </linearGradient>
+                  <filter id="p-fold-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="-2" stdDeviation="2" flood-color="#000000" flood-opacity="0.10"/>
+                  </filter>
+                </defs>
+
+                <polygon points="0,0 145,115 0,185" fill="url(#p-left)" stroke="#E4DCD0" stroke-width="0.5"/>
+                <polygon points="290,0 145,115 290,185" fill="url(#p-right)" stroke="#E4DCD0" stroke-width="0.5"/>
+                <polygon points="0,185 145,95 290,185" fill="url(#p-bottom)" stroke="#DFD6C9" stroke-width="0.6" filter="url(#p-fold-shadow)"/>
+                
+                <line x1="0" y1="185" x2="145" y2="95" stroke="#D5CBBF" stroke-width="0.7" opacity="0.5"/>
+                <line x1="290" y1="185" x2="145" y2="95" stroke="#D5CBBF" stroke-width="0.7" opacity="0.5"/>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Open Prompt -->
+        <div id="open-envelope-btn" class="cursor-pointer text-[10px] text-white/90 tracking-[0.25em] uppercase font-modern mt-5 flex items-center justify-center gap-1.5 font-medium hover:text-white transition">
+          <span>Click envelope to open</span>
+          <svg class="w-3 h-3 animate-bounce text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Bottom Date & Countdown -->
+      <div class="space-y-3 z-10 pb-2">
+        <p class="text-sm tracking-[0.3em] font-serif-luxury font-bold text-white uppercase">
+          20 . 11 . 2026
+        </p>
+
+        <div id="countdown-wrapper" class="bg-black/20 backdrop-blur-md rounded-2xl p-2.5 max-w-[280px] mx-auto border border-white/20">
+          <div class="grid grid-cols-4 gap-1 text-center">
+            <div class="bg-white/90 text-[#2D2B28] rounded-xl p-1.5 shadow-sm">
+              <span id="timer-days" class="text-base font-serif-luxury font-bold block">00</span>
+              <span class="text-[8px] text-stone-500 uppercase font-modern">วัน</span>
+            </div>
+            <div class="bg-white/90 text-[#2D2B28] rounded-xl p-1.5 shadow-sm">
+              <span id="timer-hours" class="text-base font-serif-luxury font-bold block">00</span>
+              <span class="text-[8px] text-stone-500 uppercase font-modern">ชม.</span>
+            </div>
+            <div class="bg-white/90 text-[#2D2B28] rounded-xl p-1.5 shadow-sm">
+              <span id="timer-minutes" class="text-base font-serif-luxury font-bold block">00</span>
+              <span class="text-[8px] text-stone-500 uppercase font-modern">นาที</span>
+            </div>
+            <div class="bg-white/90 text-[#2D2B28] rounded-xl p-1.5 shadow-sm">
+              <span id="timer-seconds" class="text-base font-serif-luxury font-bold block">00</span>
+              <span class="text-[8px] text-stone-500 uppercase font-modern">วิ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 2: THE DETAILS (Vintage Ornate Baroque Frame)         -->
+    <!-- ============================================================ -->
+    <section id="the-details-section" class="py-12 px-6 text-center bg-[#F8F5F0] border-b border-stone-200">
+      
+      <p class="text-[10px] tracking-[0.3em] uppercase text-[#6B7A66] font-semibold font-modern mb-1">
+        Wedding Celebration
+      </p>
+      <h2 class="text-4xl font-script text-[#2D2B28] mb-6">
+        The Details
+      </h2>
+
+      <!-- Baroque Gold Frame with Couple Photo / Video (Enlarged for Video Embed) -->
+      <div class="w-72 sm:w-80 max-w-[90%] mx-auto baroque-frame mb-6">
+        <div class="baroque-frame-inner">
+          <div class="w-full aspect-[4/5] overflow-hidden rounded bg-black/5 relative flex items-center justify-center">
+            <!-- Media Container: สามารถแทนที่ <img> ด้วย <video autoplay muted loop playsinline class="w-full h-full object-cover"> ได้ทันที -->
+            <img id="details-featured-media" src="images/IMG_7816.JPG" alt="Film & Pei Wedding" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Names & Date -->
+      <div class="space-y-1 mb-8 pt-1">
+        <p class="text-sm font-serif-luxury tracking-[0.25em] text-[#2D2B28] uppercase font-bold">
+          FILM & PEI
+        </p>
+        <p class="text-xs text-stone-500 font-serif-luxury tracking-widest">
+          20 . 11 . 2026
+        </p>
+        <div class="text-[#C5A869] text-xs pt-1">♡</div>
+      </div>
+
+      <!-- Two-Column Ceremony & Reception Card (Shifted down for breathing room) -->
+      <div class="grid grid-cols-2 gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#EFEAE1] shadow-sm text-left mt-6 mb-2">
+        <div class="border-r border-stone-200 pr-2">
+          <p class="text-[10px] font-modern uppercase tracking-widest text-[#6B7A66] font-semibold">CEREMONY</p>
+          <p class="text-xs font-bold text-stone-800 font-serif-luxury mt-0.5">16.30 น.</p>
+          <p class="text-[11px] text-stone-600 font-medium font-thai">โอละเข่ง : Olakeng</p>
+          <p class="text-[9px] text-stone-400 font-thai">นนทบุรี</p>
+        </div>
+        <div class="pl-1">
+          <p class="text-[10px] font-modern uppercase tracking-widest text-[#6B7A66] font-semibold">RECEPTION</p>
+          <p class="text-xs font-bold text-stone-800 font-serif-luxury mt-0.5">17.30 น.</p>
+          <p class="text-[11px] text-stone-600 font-medium font-thai">โอละเข่ง : Olakeng</p>
+          <p class="text-[9px] text-stone-400 font-thai">นนทบุรี</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 3: WEDDING TIMELINE (กำหนดการในพิธี ว่าเวลาไหนทำอะไร) -->
+    <!-- ============================================================ -->
+    <section class="py-14 px-4 sm:px-6 bg-[#657660] text-white text-center relative overflow-hidden border-b border-[#556350]">
+      
+      <!-- Subtle Watercolor grain wash -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/20 pointer-events-none"></div>
+
+      <!-- Header -->
+      <div class="reveal-on-scroll relative z-10 mb-8">
+        <p class="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-white/80 font-semibold font-modern mb-1">
+          Wedding Itinerary
+        </p>
+        <h2 class="text-4xl sm:text-5xl font-script text-white drop-shadow-sm">
+          Our Timeline
+        </h2>
+        <p class="text-[11px] font-serif-luxury tracking-widest text-white/80 uppercase mt-1">
+          20 NOVEMBER 2026
+        </p>
+      </div>
+
+      <!-- Vertical Timeline Track with Alternating Polaroids (Matching media_1788424172268.png) -->
+      <div class="relative max-w-sm mx-auto z-10 py-2">
+        
+        <!-- Center White Dividing Line -->
+        <div class="absolute left-1/2 top-4 bottom-4 w-[1px] bg-white/40 -translate-x-1/2 z-0"></div>
+
+        <div class="space-y-7 sm:space-y-8">
+
+          <!-- Milestone 1: 16.30 น. เปิดตัวบ่าวสาว -->
+          <div class="reveal-on-scroll relative grid grid-cols-2 gap-4 items-center">
+            <!-- Center Circular Node -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 border-white bg-[#657660] flex items-center justify-center z-20 shadow-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+            </div>
+
+            <!-- Left: Polaroid -->
+            <div class="flex justify-end pr-3">
+              <div class="polaroid-frame w-[120px] sm:w-[135px] -rotate-3 hover:rotate-0 transition-transform duration-300 cursor-pointer">
+                <div class="w-full aspect-[4/5] rounded-sm overflow-hidden bg-stone-100">
+                  <img src="images/IMG_7818.JPG" alt="เปิดตัวบ่าวสาว" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[7.5px] font-script text-stone-600 text-center mt-1.5 leading-none">grand entrance</p>
+              </div>
+            </div>
+
+            <!-- Right: Text -->
+            <div class="flex flex-col justify-center text-left pl-3 space-y-0.5">
+              <span class="text-xs sm:text-sm font-mono font-bold text-[#FDF1BA] tracking-wider">16.30 น.</span>
+              <h3 class="text-xs sm:text-sm font-thai font-bold text-white">เปิดตัวบ่าวสาว</h3>
+              <p class="text-[8.5px] sm:text-[9.5px] font-modern uppercase tracking-widest text-white/80">Grand Entrance</p>
+            </div>
+          </div>
+
+          <!-- Milestone 2: 17.00 น. พิธีรับไหว้ ขอขมา -->
+          <div class="reveal-on-scroll relative grid grid-cols-2 gap-4 items-center">
+            <!-- Center Circular Node -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 border-white bg-[#657660] flex items-center justify-center z-20 shadow-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+            </div>
+
+            <!-- Left: Text -->
+            <div class="flex flex-col justify-center text-right pr-3 space-y-0.5">
+              <span class="text-xs sm:text-sm font-mono font-bold text-[#FDF1BA] tracking-wider">17.00 น.</span>
+              <h3 class="text-xs sm:text-sm font-thai font-bold text-white">พิธีรับไหว้ ขอขมา</h3>
+              <p class="text-[8.5px] sm:text-[9.5px] font-modern uppercase tracking-widest text-white/80">Blessing Ceremony</p>
+            </div>
+
+            <!-- Right: Polaroid -->
+            <div class="flex justify-start pl-3">
+              <div class="polaroid-frame w-[120px] sm:w-[135px] rotate-3 hover:rotate-0 transition-transform duration-300 cursor-pointer">
+                <div class="w-full aspect-[4/5] rounded-sm overflow-hidden bg-stone-100">
+                  <img src="images/IMG_7820.JPG" alt="พิธีรับไหว้ ขอขมา" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[7.5px] font-script text-stone-600 text-center mt-1.5 leading-none">blessing ceremony</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 3: 17.30 น. รับประทานอาหารร่วมกัน -->
+          <div class="reveal-on-scroll relative grid grid-cols-2 gap-4 items-center">
+            <!-- Center Circular Node -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 border-white bg-[#657660] flex items-center justify-center z-20 shadow-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+            </div>
+
+            <!-- Left: Polaroid -->
+            <div class="flex justify-end pr-3">
+              <div class="polaroid-frame w-[120px] sm:w-[135px] -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-pointer">
+                <div class="w-full aspect-[4/5] rounded-sm overflow-hidden bg-stone-100">
+                  <img src="images/IMG_7817.JPG" alt="รับประทานอาหารร่วมกัน" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[7.5px] font-script text-stone-600 text-center mt-1.5 leading-none">dinner celebration</p>
+              </div>
+            </div>
+
+            <!-- Right: Text -->
+            <div class="flex flex-col justify-center text-left pl-3 space-y-0.5">
+              <span class="text-xs sm:text-sm font-mono font-bold text-[#FDF1BA] tracking-wider">17.30 น.</span>
+              <h3 class="text-xs sm:text-sm font-thai font-bold text-white">รับประทานอาหารร่วมกัน</h3>
+              <p class="text-[8.5px] sm:text-[9.5px] font-modern uppercase tracking-widest text-white/80">Dinner Celebration</p>
+            </div>
+          </div>
+
+          <!-- Milestone 4: 18.30 น. เล่นเกมส์สนุกๆ ชิงรางวัล -->
+          <div class="reveal-on-scroll relative grid grid-cols-2 gap-4 items-center">
+            <!-- Center Circular Node -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 border-white bg-[#657660] flex items-center justify-center z-20 shadow-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+            </div>
+
+            <!-- Left: Text -->
+            <div class="flex flex-col justify-center text-right pr-3 space-y-0.5">
+              <span class="text-xs sm:text-sm font-mono font-bold text-[#FDF1BA] tracking-wider">18.30 น.</span>
+              <h3 class="text-xs sm:text-sm font-thai font-bold text-white">เล่นเกมส์สนุกๆ ชิงรางวัล</h3>
+              <p class="text-[8.5px] sm:text-[9.5px] font-modern uppercase tracking-widest text-white/80">Games & Lucky Draw</p>
+            </div>
+
+            <!-- Right: Polaroid -->
+            <div class="flex justify-start pl-3">
+              <div class="polaroid-frame w-[120px] sm:w-[135px] rotate-2.5 hover:rotate-0 transition-transform duration-300 cursor-pointer">
+                <div class="w-full aspect-[4/5] rounded-sm overflow-hidden bg-stone-100">
+                  <img src="images/IMG_7827.JPG" alt="เล่นเกมส์สนุกๆ" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[7.5px] font-script text-stone-600 text-center mt-1.5 leading-none">fun games</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestone 5: 20.30 น. จบพิธี -->
+          <div class="reveal-on-scroll relative grid grid-cols-2 gap-4 items-center">
+            <!-- Center Circular Node -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 border-white bg-[#657660] flex items-center justify-center z-20 shadow-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+            </div>
+
+            <!-- Left: Polaroid -->
+            <div class="flex justify-end pr-3">
+              <div class="polaroid-frame w-[120px] sm:w-[135px] -rotate-2 hover:rotate-0 transition-transform duration-300 cursor-pointer">
+                <div class="w-full aspect-[4/5] rounded-sm overflow-hidden bg-stone-100">
+                  <img src="images/IMG_7821.JPG" alt="จบพิธี" class="w-full h-full object-cover">
+                </div>
+                <p class="text-[7.5px] font-script text-stone-600 text-center mt-1.5 leading-none">farewells & photos</p>
+              </div>
+            </div>
+
+            <!-- Right: Text -->
+            <div class="flex flex-col justify-center text-left pl-3 space-y-0.5">
+              <span class="text-xs sm:text-sm font-mono font-bold text-[#FDF1BA] tracking-wider">20.30 น.</span>
+              <h3 class="text-xs sm:text-sm font-thai font-bold text-white">จบพิธี</h3>
+              <p class="text-[8.5px] sm:text-[9.5px] font-modern uppercase tracking-widest text-white/80">Farewells & Memorial Photos</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Quote -->
+      <div class="reveal-on-scroll mt-10 text-center relative z-10 px-4">
+        <p class="text-[9px] sm:text-[10px] font-serif-luxury tracking-[0.25em] text-white/90 uppercase leading-relaxed font-medium">
+          CAN'T WAIT TO CELEBRATE WITH YOU.<br>20 . 11 . 2026 • โอละเข่ง
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 4: PRE-WEDDING PHOTO SHOWCASE (Photos 7, 8, 9 & All) -->
+    <!-- ============================================================ -->
+    <section id="photo-slider-section" class="py-12 px-6 bg-[#F8F5F0] border-b border-stone-200 text-center">
+      
+      <p class="text-[10px] tracking-[0.3em] uppercase text-[#6B7A66] font-semibold font-modern mb-1">
+        Photo Gallery
+      </p>
+      <h2 class="text-4xl font-script text-[#2D2B28] mb-6">
+        Moments of Us
+      </h2>
+
+      <!-- Smooth Crossfade Slider Container -->
+      <div class="relative w-full aspect-[3/4] max-w-[320px] mx-auto rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-stone-200">
+        
+        <!-- 9 Slide Images -->
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-100">
+          <img src="images/IMG_7815.JPG" class="w-full h-full object-cover" alt="Moments 1">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7816.JPG" class="w-full h-full object-cover" alt="Moments 2">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7817.JPG" class="w-full h-full object-cover" alt="Moments 3">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7818.JPG" class="w-full h-full object-cover" alt="Moments 4">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7820.JPG" class="w-full h-full object-cover" alt="Moments 5">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7821.JPG" class="w-full h-full object-cover" alt="Moments 6">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7822.JPG" class="w-full h-full object-cover" alt="Moments 7">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7827.JPG" class="w-full h-full object-cover" alt="Moments 8">
+        </div>
+        <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
+          <img src="images/IMG_7828.JPG" class="w-full h-full object-cover" alt="Moments 9">
+        </div>
+
+        <!-- Arrows -->
+        <button id="slider-prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm z-20 hover:bg-black/60 transition">
+          ‹
+        </button>
+        <button id="slider-next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-sm z-20 hover:bg-black/60 transition">
+          ›
+        </button>
+      </div>
+
+      <!-- Slide Caption & Counter -->
+      <div class="mt-4 space-y-1">
+        <p id="slider-caption-text" class="text-xs text-stone-700 font-thai font-medium">
+          Chapter 01: จุดเริ่มต้นของความรักอันงดงาม
+        </p>
+        <p id="slider-counter-text" class="text-[10px] font-mono text-stone-400">
+          01 / 09
+        </p>
+      </div>
+
+      <!-- Full Album Link -->
+      <a href="gallery.html" class="inline-block mt-4 px-5 py-2 rounded-full border border-[#C5A869] text-[#9E8347] hover:bg-[#C5A869] hover:text-white text-xs font-modern uppercase tracking-widest transition">
+        ดูภาพทั้งหมดในแกลเลอรี ➔
+      </a>
+
+    </section>
+
+
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 6: DRESS CODE & VENUE LOCATION (MATCHING EXSAM)       -->
+    <!-- ============================================================ -->
+    <section class="py-12 px-6 bg-[#F8F5F0] border-b border-stone-200 text-center">
+      
+      <!-- Dress Code Section -->
+      <div class="reveal-on-scroll max-w-sm mx-auto mb-10 pb-8 border-b border-[#C5A869]/30">
+        <h2 class="text-4xl font-script text-[#2D2B28] mb-2">
+          Dress Code
+        </h2>
+        
+        <!-- Clean Compact Typography without excessive breaks -->
+        <p class="text-xs text-stone-600 font-thai max-w-xs mx-auto leading-relaxed mb-6">
+          ขอความกรุณาแขกผู้มีเกียรติร่วมแต่งกายในโทน <span class="font-bold text-[#6B7A66]">"สีพาสเทล"</span> เพื่อความสดใสและเข้ากับบรรยากาศสวนธรรมชาติ
+        </p>
+
+        <!-- Pastel Color Palette as SVG Hearts (Matching exsam.avif) -->
+        <div class="flex items-center justify-center gap-5 sm:gap-7 my-4">
+          
+          <!-- Heart 1: Pastel Blue -->
+          <div class="flex flex-col items-center group cursor-pointer">
+            <div class="w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-125">
+              <svg class="w-9 h-9 drop-shadow-sm fill-[#A8D1E7]" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-thai text-stone-700 font-semibold mt-1">ฟ้า</span>
+            <span class="text-[8px] font-modern uppercase tracking-wider text-stone-400">Blue</span>
+          </div>
+
+          <!-- Heart 2: Pastel Pink -->
+          <div class="flex flex-col items-center group cursor-pointer">
+            <div class="w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-125">
+              <svg class="w-9 h-9 drop-shadow-sm fill-[#F4C6CF]" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-thai text-stone-700 font-semibold mt-1">ชมพู</span>
+            <span class="text-[8px] font-modern uppercase tracking-wider text-stone-400">Pink</span>
+          </div>
+
+          <!-- Heart 3: Pastel Yellow -->
+          <div class="flex flex-col items-center group cursor-pointer">
+            <div class="w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-125">
+              <svg class="w-9 h-9 drop-shadow-sm fill-[#FDF1BA]" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-thai text-stone-700 font-semibold mt-1">เหลือง</span>
+            <span class="text-[8px] font-modern uppercase tracking-wider text-stone-400">Yellow</span>
+          </div>
+
+          <!-- Heart 4: Pastel Brown -->
+          <div class="flex flex-col items-center group cursor-pointer">
+            <div class="w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-125">
+              <svg class="w-9 h-9 drop-shadow-sm fill-[#D5BAA6]" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <span class="text-[11px] font-thai text-stone-700 font-semibold mt-1">น้ำตาล</span>
+            <span class="text-[8px] font-modern uppercase tracking-wider text-stone-400">Brown</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Venue & Map Direction -->
+      <div class="reveal-on-scroll max-w-sm mx-auto text-center pt-2">
+        <h3 class="text-3xl font-alex text-[#2D2B28] mb-1">
+          Where To Stay & Venue
+        </h3>
+        <p class="text-xs text-stone-500 font-thai mb-4">
+          สถานที่จัดงานในบรรยากาศสวนธรรมชาติ นนทบุรี
+        </p>
+
+        <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm space-y-2 mb-5 text-left">
+          <p class="text-xs text-stone-800 font-thai flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#6B7A66] shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span><strong>สถานที่:</strong> โอละเข่ง (Olakeng)</span>
+          </p>
+          <p class="text-xs text-stone-600 font-thai flex items-center gap-2">
+            <svg class="w-4 h-4 text-[#6B7A66] shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+            <span><strong>ที่จอดรถ:</strong> มีพื้นที่จอดรถกว้างขวางรองรับแขกทุกท่าน</span>
+          </p>
+        </div>
+
+        <a href="https://maps.app.goo.gl/rdZy7JMoDDhcY9xr5" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#6B7A66] hover:bg-[#556350] text-white text-[10px] font-modern uppercase tracking-[0.2em] font-medium shadow-sm transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+          </svg>
+          <span>เปิด Google Maps นำทางไปงาน</span>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 7: KINDLY REPLY (INTERACTIVE DYNAMIC RSVP FORM)        -->
+    <!-- ============================================================ -->
+    <section class="py-12 px-6 bg-[#FAF7F2] text-center">
+      
+      <!-- Mini Frame with Couple Photo (Matches exsam.avif Kindly Reply) -->
+      <div class="w-20 h-24 mx-auto baroque-frame mb-3">
+        <div class="baroque-frame-inner">
+          <img src="images/IMG_7815.JPG" alt="Film & Pei Mini" class="w-full h-full object-cover rounded">
+        </div>
+      </div>
+
+      <h2 class="text-4xl font-script text-[#2D2B28] mb-1">
+        Kindly Reply
+      </h2>
+      <p class="text-[10px] text-stone-500 font-modern tracking-widest uppercase mb-6">
+        Kindly reply by the 1st of November, 2026
+      </p>
+
+      <!-- Form Card -->
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm text-left max-w-sm mx-auto">
+        
+        <form id="rsvp-form" class="space-y-4 text-xs font-thai">
+          
+          <!-- Guest Name -->
+          <div>
+            <label for="guest-name" class="block font-bold text-stone-700 uppercase tracking-wider mb-1">
+              ชื่อ - นามสกุล ของท่าน <span class="text-rose-500">*</span>
+            </label>
+            <input type="text" id="guest-name" required placeholder="ระบุชื่อและนามสกุล..." class="w-full p-2.5 border border-stone-300 rounded-xl outline-none focus:border-[#6B7A66] bg-stone-50">
+          </div>
+
+          <!-- Attendance Radio -->
+          <div>
+            <label class="block font-bold text-stone-700 uppercase tracking-wider mb-1.5">
+              การเข้าร่วมงาน <span class="text-rose-500">*</span>
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center gap-2 p-2.5 border border-stone-300 rounded-xl bg-stone-50 cursor-pointer hover:border-[#6B7A66]">
+                <input type="radio" name="attendance" value="attending" checked class="text-[#6B7A66]">
+                <span class="font-medium text-stone-800 text-[11px]">ยินดีมาร่วมงาน</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 border border-stone-300 rounded-xl bg-stone-50 cursor-pointer hover:border-[#6B7A66]">
+                <input type="radio" name="attendance" value="declined" class="text-[#6B7A66]">
+                <span class="text-stone-600 text-[11px]">ขออภัย ไม่สะดวก</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- DYNAMIC ATTENDEE COUNT (Slides down when attending) -->
+          <div id="attendee-count-container" class="transition-all duration-300">
+            <label for="attendee-count" class="block font-bold text-[#6B7A66] uppercase tracking-wider mb-1">
+              จำนวนผู้ร่วมงานทั้งหมด (รวมตัวท่าน) <span class="text-rose-500">*</span>
+            </label>
+            <select id="attendee-count" class="w-full p-2.5 border border-[#6B7A66] rounded-xl outline-none bg-[#F8F5F0] font-medium">
+              <option value="1">1 ท่าน</option>
+              <option value="2" selected>2 ท่าน</option>
+              <option value="3">3 ท่าน</option>
+              <option value="4">4 ท่าน</option>
+              <option value="5">5 ท่านขึ้นไป</option>
+            </select>
+          </div>
+
+          <!-- Wishes Textarea -->
+          <div>
+            <label for="guest-wishes" class="block font-bold text-stone-700 uppercase tracking-wider mb-1">
+              คำอวยพรแด่คู่บ่าวสาว (Film & Pei)
+            </label>
+            <textarea id="guest-wishes" rows="2" placeholder="ส่งความปรารถนาดีและคำอวยพร..." class="w-full p-2.5 border border-stone-300 rounded-xl outline-none focus:border-[#6B7A66] bg-stone-50"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="w-full py-3 bg-[#6B7A66] hover:bg-[#556350] text-white font-modern uppercase tracking-[0.2em] font-medium text-xs rounded-xl shadow-md transition">
+            SUBMIT RESPONSE
+          </button>
+        </form>
+
+        <!-- Success Toast -->
+        <div id="rsvp-success-card" class="hidden text-center py-6 space-y-2">
+          <div class="w-12 h-12 rounded-full bg-[#EBF0E9] text-[#6B7A66] mx-auto flex items-center justify-center text-xl">
+            ✓
+          </div>
+          <h4 class="font-serif-luxury text-xl font-bold text-stone-900">ขอบคุณสำหรับการตอบรับ!</h4>
+          <p class="text-xs text-stone-500 font-thai">เราได้รับข้อมูลของคุณ <span id="success-guest-name" class="font-bold"></span> เรียบร้อยแล้ว</p>
+        </div>
+
+      </div>
+
+      <!-- Live Wishes Feed -->
+      <div class="mt-8 text-left max-w-sm mx-auto">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-serif-luxury font-bold text-stone-800 tracking-wider uppercase">Messages for the Couple</span>
+          <button id="export-rsvp-csv" class="text-[10px] text-[#6B7A66] hover:underline font-modern">Export CSV</button>
+        </div>
+        <div id="guest-wishes-feed" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-[#2D2B28] text-white text-center space-y-2">
+      <p class="text-3xl font-script text-white/90">Film & Pei</p>
+      <p class="text-[10px] tracking-[0.25em] text-white/60 uppercase font-modern">
+        20 . 11 . 2026 • โอละเข่ง
+      </p>
+      <p class="text-[9px] text-white/40 font-light pt-2">
+        Designed with love for Film & Pei's Wedding Day
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/scrolly.js"></script>
+  <script src="js/rsvp.js"></script>
+</body>
+</html>

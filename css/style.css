@@ -1,0 +1,487 @@
+/* c:/Projects/wedding/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&family=Pinyon+Script&family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap');
+
+:root {
+  --color-sage: #6B7A66;
+  --color-sage-dark: #556350;
+  --color-sage-light: #EBF0E9;
+  --color-ivory: #F8F5F0;
+  --color-linen: #EFEAE1;
+  --color-gold: #C5A869;
+  --color-gold-dark: #9E8347;
+  --color-gold-light: #E8DCB8;
+  --color-charcoal: #2D2B28;
+  --color-muted: #7A756F;
+  
+  /* Pastel Palette */
+  --pastel-blue: #A8D1E7;
+  --pastel-pink: #F4C6CF;
+  --pastel-yellow: #FDF1BA;
+  --pastel-brown: #D5BAA6;
+}
+
+/* Typography */
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Pinyon Script', cursive;
+}
+
+.font-alex {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-modern {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-thai {
+  font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-bodoni {
+  font-family: 'Bodoni Moda', 'Didot', 'Playfair Display', serif;
+}
+
+/* Global resets - NO SCROLL LOCKING */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EFEAE1;
+  color: var(--color-charcoal);
+  font-family: 'Prompt', 'Montserrat', sans-serif;
+  line-height: 1.6;
+}
+
+/* Luxury Fabric Background Texture */
+.luxury-backdrop {
+  background-color: #EFEAE1;
+  background-image: 
+    radial-gradient(ellipse at top left, rgba(255,255,255,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(200, 190, 175, 0.4) 0%, transparent 60%);
+  min-height: 100vh;
+}
+
+/* Mobile Canvas Container (Matches exsam.avif phone presentation) */
+.mobile-frame {
+  max-width: 440px;
+  margin: 0 auto;
+  background: var(--color-ivory);
+  box-shadow: 0 25px 60px -15px rgba(45, 43, 40, 0.25), 0 0 0 1px rgba(255,255,255,0.8);
+  border-radius: 36px;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .mobile-frame {
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 100%;
+  }
+}
+
+/* Screen 1: Sage Green Watercolor Hero */
+.screen-cover {
+  background: linear-gradient(175deg, #60715B 0%, #6E8069 45%, #586853 100%);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle watercolor texture overlay */
+.screen-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(0,0,0,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Ornate Baroque Gold Frame (Exact match to exsam.avif) */
+.baroque-frame {
+  position: relative;
+  padding: 10px;
+  background: linear-gradient(135deg, #DFCA98 0%, #C5A869 35%, #9E8347 70%, #E2CF9F 100%);
+  border-radius: 6px;
+  box-shadow: 0 12px 28px -6px rgba(45, 43, 40, 0.35), inset 0 2px 4px rgba(255,255,255,0.5);
+}
+
+.baroque-frame-inner {
+  position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 4px;
+  background: #FAF7F2;
+  border-radius: 4px;
+}
+
+/* Draped Pearl Necklace */
+.pearl-string {
+  position: relative;
+  height: 6px;
+  background-image: radial-gradient(circle, #FFFFFF 45%, #E5DDD0 90%);
+  background-size: 10px 10px;
+  background-repeat: repeat-x;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.18));
+}
+
+/* Antique Lace Envelope (Vector SVG with 3D Flap & Sliding Card) */
+.envelope-container {
+  position: relative;
+  width: 290px;
+  height: 185px;
+  margin: 0 auto;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.envelope-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FAF7F2;
+  border-radius: 6px;
+  box-shadow: 0 16px 36px -8px rgba(0,0,0,0.38);
+  border: 1px solid rgba(255,255,255,0.7);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.envelope-body:hover {
+  transform: translateY(-2px);
+}
+
+.envelope-flap-fold {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 290px;
+  height: 145px;
+  transform-origin: top center;
+  transition: transform 2.0s cubic-bezier(0.33, 1, 0.68, 1);
+  z-index: 20; /* In front of pocket (10) when closed */
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.22));
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.envelope-open .envelope-flap-fold {
+  transform: rotateX(180deg);
+  z-index: 1; /* Drops behind the card (5) when open */
+}
+
+/* Photo Card Sliding Out of Envelope */
+.envelope-photo-card {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%) translateY(0);
+  width: 250px;
+  height: 160px;
+  background: #FFFFFF;
+  border-radius: 6px;
+  padding: 6px;
+  z-index: 5; /* Behind pocket (10), in front of open flap (1) */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 2.2s 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s 0.2s;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+  border: 1px solid rgba(197, 168, 105, 0.45);
+}
+
+.envelope-open .envelope-photo-card {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-92px);
+  z-index: 5;
+}
+
+.envelope-bottom-pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Wax Seal Button with Monogram "FP" */
+.wax-seal-olive {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  background: radial-gradient(circle at 35% 35%, #556651, #3E4D3B 70%, #2A3628);
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35), inset 0 2px 3px rgba(255,255,255,0.25);
+  border: 2px dashed rgba(255,255,255,0.25);
+  z-index: 30; /* On top of everything when closed (higher than flap 20 and pocket 10) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #EFEAE1;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.05em;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.wax-seal-olive:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.envelope-open .wax-seal-olive {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
+/* Polaroid Photo Card (Used in Our Love Story) */
+.polaroid-card {
+  background: #FFFFFF;
+  padding: 10px 10px 18px 10px;
+  border-radius: 3px;
+  box-shadow: 0 6px 18px -4px rgba(45, 43, 40, 0.15);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-4px) rotate(0.5deg);
+  box-shadow: 0 12px 24px -6px rgba(45, 43, 40, 0.22);
+}
+
+/* Floating Audio Player */
+.floating-audio-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-gold-light);
+  box-shadow: 0 8px 20px rgba(45, 43, 40, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.floating-audio-btn:hover {
+  transform: scale(1.08);
+  background: #FFFFFF;
+}
+
+.audio-bar {
+  width: 2.5px;
+  height: 6px;
+  background-color: var(--color-sage);
+  margin: 0 1.5px;
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.audio-active .audio-bar:nth-child(1) { animation: wave 1.2s infinite ease-in-out; }
+.audio-active .audio-bar:nth-child(2) { animation: wave 1.2s 0.2s infinite ease-in-out; }
+.audio-active .audio-bar:nth-child(3) { animation: wave 1.2s 0.4s infinite ease-in-out; }
+.audio-active .audio-bar:nth-child(4) { animation: wave 1.2s 0.1s infinite ease-in-out; }
+
+@keyframes wave {
+  0%, 100% { height: 6px; }
+  50% { height: 18px; }
+}
+
+/* Scroll reveal sections with staggered motion */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* 1. Envelope Idle Floating & Wax Seal Breathing Halo */
+.envelope-container:not(.envelope-open) {
+  animation: envelopeGentlyFloat 4.2s ease-in-out infinite;
+}
+
+@keyframes envelopeGentlyFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.envelope-container:not(.envelope-open) .wax-seal-olive {
+  animation: sealHaloPulse 2.6s infinite ease-in-out;
+}
+
+@keyframes sealHaloPulse {
+  0%, 100% {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35), 0 0 0 0 rgba(197, 168, 105, 0.5);
+  }
+  50% {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 10px rgba(197, 168, 105, 0);
+  }
+}
+
+/* 2. Baroque Gold Frame Shimmering Sunlight Sweep */
+.baroque-frame {
+  overflow: hidden;
+}
+
+.baroque-frame::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  animation: goldShimmerSweep 5.5s infinite ease-in-out;
+}
+
+@keyframes goldShimmerSweep {
+  0%, 25% {
+    transform: translateX(-120%) rotate(30deg);
+  }
+  65%, 100% {
+    transform: translateX(120%) rotate(30deg);
+  }
+}
+
+/* 3. Cinematic Ken Burns Zoom Effect on Photos */
+.photo-slider-item img {
+  transform: scale(1.0);
+  transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+}
+
+.photo-slider-item.opacity-100 img {
+  transform: scale(1.08);
+}
+
+/* 4. Polaroid Cards Natural Tilt & Float on Hover */
+.polaroid-card {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+/* Polaroid Frame for Love Story on Sage Green */
+.polaroid-frame {
+  background: #FFFFFF;
+  padding: 5px 5px 12px 5px;
+  border-radius: 4px;
+  box-shadow: 0 10px 22px -4px rgba(0,0,0,0.35);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.polaroid-frame:hover {
+  box-shadow: 0 16px 30px -4px rgba(0,0,0,0.45);
+}
+
+.polaroid-tilt-1 { transform: rotate(-2deg); }
+.polaroid-tilt-2 { transform: rotate(1.8deg); }
+.polaroid-tilt-3 { transform: rotate(-1.5deg); }
+.polaroid-tilt-4 { transform: rotate(2.2deg); }
+
+.polaroid-card:hover {
+  transform: translateY(-8px) rotate(0deg) scale(1.03) !important;
+  box-shadow: 0 18px 32px -8px rgba(45, 43, 40, 0.25);
+}
+
+/* 5. Falling Flower Petals Animation */
+.petal-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 35;
+  overflow: hidden;
+}
+
+.falling-petal {
+  position: absolute;
+  top: -40px;
+  background-color: #F4C6CF;
+  border-radius: 60% 0 60% 60%;
+  opacity: 0.65;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+  animation: petalDriftDown linear infinite, petalFlutter ease-in-out infinite alternate;
+}
+
+@keyframes petalDriftDown {
+  0% {
+    top: -40px;
+    transform: rotate(0deg) rotateY(0deg);
+  }
+  100% {
+    top: 105vh;
+    transform: rotate(640deg) rotateY(360deg);
+  }
+}
+
+@keyframes petalFlutter {
+  0% { margin-left: -30px; }
+  100% { margin-left: 30px; }
+}
+
+/* 6. Timeline Streaming Animated Flow Line */
+.timeline-stream-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(107, 122, 102, 0.15),
+    #C5A869,
+    #F4C6CF,
+    #A8D1E7,
+    rgba(107, 122, 102, 0.15)
+  );
+  background-size: 100% 300%;
+  animation: streamFlow 5s linear infinite;
+}
+
+@keyframes streamFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 300%; }
+}
