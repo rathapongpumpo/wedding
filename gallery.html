@@ -32,30 +32,50 @@
       }
     }
   </script>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="อัลบั้มภาพพรีเวดดิ้ง | Film & Pei">
+  <meta property="og:description" content="บันทึกความทรงจำแห่งรัก ภาพถ่ายพรีเวดดิ้งของ ปรียาภรณ์ ชุมนุมราษฎร์ (ฟิล์ม) & รัฐพงษ์ พุ่มโพธิสาร (เป้)">
+  <meta property="og:image" content="images/share-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="อัลบั้มภาพพรีเวดดิ้ง | Film & Pei">
+  <meta name="twitter:image" content="images/share-preview.jpg">
+
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fluid-subtitle {
+      font-size: clamp(9.5px, 2.7vw, 13.5px);
+      white-space: nowrap;
+    }
+  </style>
 </head>
 <body class="paper-texture text-[#3A3532] antialiased min-h-screen pb-20">
 
   <!-- Navigation Bar -->
-  <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-stone-200/80 px-4 py-3.5">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-stone-700 hover:text-[#9A7B66] text-xs font-semibold uppercase tracking-wider transition">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-        <span>กลับหน้าการ์ดเชิญ</span>
+  <nav class="sticky top-0 z-40 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-stone-200/80 px-3 sm:px-6 py-2.5 sm:py-3.5 transition-all">
+    <div class="max-w-5xl mx-auto flex items-center justify-between gap-2">
+      <a href="index.html" class="flex items-center gap-1.5 text-stone-700 hover:text-[#9A7B66] text-xs font-semibold tracking-wider transition shrink-0">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span class="hidden sm:inline">กลับหน้าการ์ดเชิญ</span>
+        <span class="sm:hidden">การ์ดเชิญ</span>
       </a>
-      <span class="text-2xl font-alex text-[#9A7B66]">Film & Pei</span>
-      <a href="index.html#rsvp" class="py-1.5 px-4 rounded-full bg-[#9A7B66] text-white text-xs font-semibold tracking-wider hover:bg-[#856550] transition">
-        ตอบรับ RSVP
+      <span class="text-xl sm:text-2xl font-alex text-[#9A7B66] text-center truncate px-1">Film &amp; Pei</span>
+      <a href="index.html#rsvp" class="py-1.5 px-3 sm:px-4 rounded-full bg-[#9A7B66] text-white text-xs font-semibold tracking-wider hover:bg-[#856550] transition shrink-0 whitespace-nowrap shadow-sm">
+        <span class="hidden sm:inline">ตอบรับ </span>RSVP
       </a>
     </div>
   </nav>
 
   <!-- Header -->
-  <header class="py-14 px-4 text-center max-w-2xl mx-auto space-y-3">
-    <p class="text-[11px] tracking-[0.3em] uppercase text-[#9A7B66] font-semibold">Pre-Wedding Photo Album</p>
-    <h1 class="text-4xl sm:text-5xl font-serif text-stone-900 font-normal">บันทึกความทรงจำแห่งรัก</h1>
-    <p class="text-xs sm:text-sm text-stone-500 font-light leading-relaxed">
-      ภาพถ่ายพรีเวดดิ้งของ ปรียาภรณ์ ชุมนุมราษฎร์ (ฟิล์ม) & รัฐพงษ์ พุ่มโพธิสาร (เป้)
+  <header class="py-10 sm:py-14 px-3 text-center max-w-2xl mx-auto space-y-2 sm:space-y-3">
+    <p class="text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#9A7B66] font-semibold">Pre-Wedding Photo Album</p>
+    <h1 class="text-[25px] xs:text-3xl sm:text-4xl md:text-5xl font-serif text-stone-900 font-normal whitespace-nowrap tracking-normal">
+      บันทึกความทรงจำแห่งรัก
+    </h1>
+    <p class="fluid-subtitle text-stone-600 font-light px-1">
+      ภาพถ่ายพรีเวดดิ้งของ ปรียาภรณ์ ชุมนุมราษฎร์ (ฟิล์ม) &amp; รัฐพงษ์ พุ่มโพธิสาร (เป้)
     </p>
   </header>
 
