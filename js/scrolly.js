@@ -88,6 +88,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Handle direct navigation or returning to a section via URL hash (e.g. #photo-slider-section or #rsvp)
+  if (window.location.hash && window.location.hash.length > 1) {
+    try {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        if (envelope && !envelope.classList.contains('envelope-open')) {
+          envelope.classList.add('envelope-open');
+        }
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+          el.classList.add('is-visible');
+        });
+        setTimeout(() => {
+          customSmoothScroll(target, 1000, -15);
+        }, 300);
+      }
+    } catch (err) {
+      console.warn('Hash navigation error:', err);
+    }
+  }
+
   // ============================================================
   // 3. FALLING FLORAL PETALS AMBIENT SYSTEM
   // ============================================================
