@@ -5,7 +5,7 @@
 // นำ Web App URL ที่ได้จากการ Deploy ใน Google Apps Script มาใส่ที่นี่
 // (หากยังไม่ใส่ ข้อมูลจะถูกบันทึกใน LocalStorage ของเบราว์เซอร์อัตโนมัติ)
 // ============================================================
-const GOOGLE_SHEET_URL = '';
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyMYUBeEETYv9_0w0OuJsY6oJnbIM_LeK-bMqn29rbQPlOSTDoJhwQJwWKAZHYsOhkU/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
   const rsvpForm = document.getElementById('rsvp-form');
