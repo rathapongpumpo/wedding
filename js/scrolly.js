@@ -340,60 +340,127 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================
   // 9. PROFESSIONAL SAVE QR CODE TO DEVICE HANDLER
   // ============================================================
+  // ============================================================
+  // 9. WORLD-CLASS PROFESSIONAL SAVE QR CODE & COPY HANDLER
+  // ============================================================
   const saveQrBtn = document.getElementById('save-qr-btn');
+  const qrModal = document.getElementById('qr-luxury-modal');
+  const closeQrModalBtn = document.getElementById('close-qr-modal');
+  const copyPromptPayBtn = document.getElementById('copy-promptpay-btn');
+  const modalCopyBtn = document.getElementById('modal-copy-promptpay-btn');
+  const qrImgEl = document.getElementById('qr-image-el');
+
+  function openQrModal() {
+    if (!qrModal) return;
+    qrModal.classList.remove('hidden');
+    qrModal.classList.add('flex');
+  }
+
+  function closeQrModal() {
+    if (!qrModal) return;
+    qrModal.classList.add('hidden');
+    qrModal.classList.remove('flex');
+  }
+
+  if (closeQrModalBtn) {
+    closeQrModalBtn.addEventListener('click', closeQrModal);
+  }
+  if (qrModal) {
+    qrModal.addEventListener('click', (e) => {
+      if (e.target === qrModal) closeQrModal();
+    });
+  }
+
+  if (qrImgEl) {
+    qrImgEl.style.cursor = 'pointer';
+    qrImgEl.title = 'แตะเพื่อดูภาพ QR Code ขนาดเต็ม';
+    qrImgEl.addEventListener('click', openQrModal);
+  }
+
+  // 1-Tap Copy PromptPay Number with Toast/Feedback
+  async function copyPromptPay(btnEl, textEl) {
+    const numberToCopy = 'xxx-xxx-6617';
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(numberToCopy);
+      } else {
+        const input = document.createElement('input');
+        input.value = numberToCopy;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+
+      const origText = textEl ? textEl.textContent : 'คัดลอก';
+      if (textEl) textEl.textContent = 'คัดลอกสำเร็จ ✓';
+      if (btnEl) btnEl.classList.add('bg-[#52634D]', 'text-white');
+
+      setTimeout(() => {
+        if (textEl) textEl.textContent = origText;
+        if (btnEl) btnEl.classList.remove('bg-[#52634D]', 'text-white');
+      }, 2000);
+    } catch (err) {
+      console.warn('Copy failed:', err);
+    }
+  }
+
+  if (copyPromptPayBtn) {
+    copyPromptPayBtn.addEventListener('click', () => {
+      copyPromptPay(copyPromptPayBtn, document.getElementById('copy-btn-text'));
+    });
+  }
+  if (modalCopyBtn) {
+    modalCopyBtn.addEventListener('click', () => {
+      copyPromptPay(modalCopyBtn, document.getElementById('modal-copy-text'));
+    });
+  }
+
+  // Save QR Code: Native Share to Photos -> Fallback to Luxury Modal
   if (saveQrBtn) {
     saveQrBtn.addEventListener('click', async (e) => {
       e.preventDefault();
+
       const btnText = document.getElementById('save-qr-btn-text');
       const iconDl = document.getElementById('save-qr-icon-dl');
       const iconCheck = document.getElementById('save-qr-icon-check');
 
+      // 1. Modern Mobile: Native Web Share API with File (Direct to iOS Photos / Android Gallery)
+      // Completely bypasses browser "download file?" dialog!
       try {
-        const response = await fetch('images/QR.jpg');
-        if (!response.ok) throw new Error('Fetch failed');
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
+        if (navigator.canShare) {
+          const response = await fetch('images/QR.jpg');
+          if (response.ok) {
+            const blob = await response.blob();
+            const file = new File([blob], 'PromptPay_QR_Preeyaporn.jpg', { type: 'image/jpeg' });
+            
+            if (navigator.canShare({ files: [file] })) {
+              await navigator.share({
+                files: [file],
+                title: 'QR Code ร่วมแสดงความยินดี',
+                text: 'QR Code พร้อมเพย์ คุณปรียาภรณ์ ชุมนุมราษฎร์'
+              });
 
-        const downloadLink = document.createElement('a');
-        downloadLink.style.display = 'none';
-        downloadLink.href = blobUrl;
-        downloadLink.download = 'PromptPay_QR_Preeyaporn.jpg';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        
-        setTimeout(() => {
-          document.body.removeChild(downloadLink);
-          window.URL.revokeObjectURL(blobUrl);
-        }, 1500);
-
-        // Success state feedback
-        if (btnText) btnText.textContent = 'บันทึกภาพสำเร็จแล้ว ✓';
-        if (iconDl) iconDl.classList.add('hidden');
-        if (iconCheck) iconCheck.classList.remove('hidden');
-        saveQrBtn.classList.add('bg-[#52634D]');
-
-        setTimeout(() => {
-          if (btnText) btnText.textContent = 'บันทึกภาพ QR Code';
-          if (iconDl) iconDl.classList.remove('hidden');
-          if (iconCheck) iconCheck.classList.add('hidden');
-          saveQrBtn.classList.remove('bg-[#52634D]');
-        }, 2500);
-
-      } catch (err) {
-        // Fallback for strict browser environments or direct download
-        const fallbackLink = document.createElement('a');
-        fallbackLink.href = 'images/QR.jpg';
-        fallbackLink.download = 'PromptPay_QR_Preeyaporn.jpg';
-        fallbackLink.target = '_blank';
-        document.body.appendChild(fallbackLink);
-        fallbackLink.click();
-        document.body.removeChild(fallbackLink);
-
-        if (btnText) btnText.textContent = 'บันทึกภาพสำเร็จแล้ว ✓';
-        setTimeout(() => {
-          if (btnText) btnText.textContent = 'บันทึกภาพ QR Code';
-        }, 2500);
+              if (btnText) btnText.textContent = 'เปิดเมนูบันทึกแล้ว ✓';
+              if (iconDl) iconDl.classList.add('hidden');
+              if (iconCheck) iconCheck.classList.remove('hidden');
+              setTimeout(() => {
+                if (btnText) btnText.textContent = 'บันทึกภาพ QR Code';
+                if (iconDl) iconDl.classList.remove('hidden');
+                if (iconCheck) iconCheck.classList.add('hidden');
+              }, 2500);
+              return;
+            }
+          }
+        }
+      } catch (shareErr) {
+        // If user dismissed native share sheet, cleanly exit
+        if (shareErr.name === 'AbortError') return;
+        console.warn('Native share unavailable:', shareErr);
       }
+
+      // 2. In-App Webview (LINE / FB) or Desktop Fallback: Open Luxury QR Lightbox Modal
+      openQrModal();
     });
   }
 
