@@ -62,10 +62,10 @@
 </head>
 <body class="luxury-backdrop text-[#2D2B28] antialiased min-h-screen py-0 sm:py-8">
 
-  <!-- Audio Player (sound.mp3) -->
-  <audio id="wedding-audio-player" loop preload="auto" playsinline>
-    <source src="sound.mp3" type="audio/mpeg">
+  <!-- Audio Player (sound.MP3) -->
+  <audio id="wedding-audio-player" loop preload="none" playsinline>
     <source src="sound.MP3" type="audio/mpeg">
+    <source src="sound.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Floating Audio Player -->
@@ -317,7 +317,10 @@
           </div>
 
           <!-- 2. Real French Lace Frame: Sits directly over the video with pointer-events-none -->
-          <img src="images/french_lace_frame.png" alt="French Lace Frame" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; z-index: 20;">
+          <picture style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20;">
+            <source srcset="images/optimized/french_lace_frame.webp" type="image/webp">
+            <img src="images/french_lace_frame.png" alt="French Lace Frame" class="w-full h-full object-contain pointer-events-none" loading="lazy">
+          </picture>
 
         </div>
 
@@ -558,13 +561,13 @@
         <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
           <picture>
             <source srcset="images/optimized/S__35856419.webp" type="image/webp">
-            <img src="images/S__35856419.jpg" class="w-full h-full object-cover" alt="Moments 2" loading="lazy">
+            <img src="images/S__35856419.jpg" class="w-full h-full object-cover" alt="Moments 2">
           </picture>
         </div>
         <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
           <picture>
             <source srcset="images/optimized/IMG_7817.webp" type="image/webp">
-            <img src="images/IMG_7817.JPG" class="w-full h-full object-cover" alt="Moments 3" loading="lazy">
+            <img src="images/IMG_7817.JPG" class="w-full h-full object-cover" alt="Moments 3">
           </picture>
         </div>
         <div class="photo-slider-item absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none">
@@ -621,11 +624,11 @@
 
       <!-- Slide Caption & Counter -->
       <div class="mt-4 space-y-1">
-        <p id="slider-caption-text" class="text-xs text-stone-700 font-thai font-medium">
+        <p id="slider-caption-text" class="text-xs text-stone-700 font-thai font-medium whitespace-nowrap">
           Chapter 01: จุดเริ่มต้นของความรักอันงดงาม
         </p>
         <p id="slider-counter-text" class="text-[10px] font-mono text-stone-400">
-          01 / 09
+          01 / 10
         </p>
       </div>
 
@@ -850,22 +853,22 @@
         <p class="text-[10px] tracking-[0.3em] uppercase text-[#6B7A66] font-semibold font-modern mb-1">
           Wedding Gift &amp; Blessing
         </p>
-        <h3 class="text-3xl font-alex text-[#2D2B28] mb-2">
+        <h3 class="text-2xl sm:text-3xl font-alex text-[#2D2B28] mb-2 whitespace-nowrap">
           ของขวัญแด่คู่บ่าวสาว
         </h3>
         <p class="text-xs text-stone-600 font-thai mb-6 leading-relaxed">
-          หากท่านประสงค์จะร่วมแสดงความยินดีและมอบของขวัญแด่คู่บ่าวสาว<br>สามารถสแกนผ่าน QR Code พร้อมเพย์ด้านล่างนี้
+          ร่วมแสดงความยินดีและมอบของขวัญแด่คู่บ่าวสาว<br>ผ่าน QR Code พร้อมเพย์ด้านล่างนี้
         </p>
 
         <!-- Modern Luxury QR Blessing Card -->
-        <div class="bg-gradient-to-b from-[#FAF6F0] to-[#EFE8DD] p-6 sm:p-7 rounded-2xl border border-[#D5C9B8] shadow-[0_8px_24px_rgba(45,43,40,0.06)] relative overflow-hidden">
+        <div class="bg-gradient-to-b from-[#FAF6F0] to-[#EFE8DD] p-4 xs:p-6 sm:p-7 rounded-2xl border border-[#D5C9B8] shadow-[0_8px_24px_rgba(45,43,40,0.06)] relative overflow-hidden">
           
           <!-- Subtle Top Gold Hairline -->
           <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C5A869] to-transparent"></div>
 
           <!-- Account Name in Modern Luxury Typography (Without PromptPay badge & ชื่อบัญชี label) -->
           <div class="mb-4 text-center">
-            <h4 class="text-xl font-thai font-bold text-[#2D2B28] tracking-wide mb-1.5">
+            <h4 class="text-xl font-thai font-bold text-[#2D2B28] tracking-wide mb-1.5 whitespace-nowrap">
               ปรียาภรณ์ ชุมนุมราษฎร์
             </h4>
             <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C5A869] to-transparent mx-auto"></div>
@@ -881,26 +884,29 @@
 
           <!-- Save QR Code to Device Button (Modern Luxury Aesthetic) -->
           <div class="mt-4 flex flex-col items-center">
-            <button id="save-qr-btn" type="button" class="w-full max-w-[240px] py-2.5 px-5 rounded-full bg-[#6B7A66] hover:bg-[#586653] active:scale-95 text-white text-xs font-thai font-semibold shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer">
+            <button id="save-qr-btn" type="button" class="w-full max-w-[240px] py-2.5 px-4 xs:px-5 rounded-full bg-[#6B7A66] hover:bg-[#586653] active:scale-95 text-white text-xs font-thai font-semibold shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer whitespace-nowrap">
               <svg id="save-qr-icon-dl" class="w-4 h-4 text-white/90 group-hover:translate-y-0.5 transition-transform shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
               </svg>
               <svg id="save-qr-icon-check" class="w-4 h-4 text-[#FDF1BA] shrink-0 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
               </svg>
-              <span id="save-qr-btn-text">บันทึกภาพ QR Code</span>
+              <span id="save-qr-btn-text" class="whitespace-nowrap">บันทึกภาพ QR Code</span>
             </button>
-            <p class="text-[9.5px] text-stone-500 font-thai mt-1.5 opacity-85">
+            <p class="text-[9.5px] text-stone-500 font-thai mt-1.5 opacity-85 whitespace-nowrap">
               แตะเพื่อบันทึกภาพ หรือแตะค้างที่รูปภาพ QR
             </p>
           </div>
 
-          <!-- PromptPay Info & Copy Button -->
-          <div class="mt-3 pt-3 border-t border-[#E4DCD0] flex items-center justify-center gap-2">
-            <span class="text-xs font-mono text-stone-600 font-medium tracking-wider">หมายเลขพร้อมเพย์: <span id="promptpay-num">xxx-xxx-6617</span></span>
-            <button id="copy-promptpay-btn" type="button" class="py-1 px-3 rounded-full bg-[#FAF6F0] hover:bg-white border border-[#D5C9B8] text-[10px] font-thai text-[#6B7A66] font-semibold transition active:scale-95 flex items-center gap-1 cursor-pointer shadow-2xs">
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-              <span id="copy-btn-text">คัดลอก</span>
+          <!-- PromptPay Info & 1-Tap Copy Button -->
+          <div class="mt-4 pt-3.5 border-t border-[#E4DCD0] flex items-center justify-between gap-1.5 xs:gap-2 px-2.5 xs:px-3 py-2 bg-stone-50/90 rounded-xl border border-[#DFCA98]/40">
+            <div class="flex items-center gap-1 xs:gap-1.5 text-xs text-stone-700 font-thai whitespace-nowrap min-w-0">
+              <span class="text-[10px] xs:text-[11px] text-stone-500 shrink-0">พร้อมเพย์</span>
+              <span id="promptpay-num" class="font-mono font-bold text-stone-800 text-[11px] xs:text-xs sm:text-sm tracking-tight xs:tracking-wide select-all whitespace-nowrap">xxx-xxx-6617</span>
+            </div>
+            <button id="copy-promptpay-btn" type="button" class="shrink-0 whitespace-nowrap py-1 px-2.5 xs:px-3 rounded-full bg-white hover:bg-stone-100 border border-[#D5C9B8] text-[9.5px] xs:text-[10px] font-thai text-[#6B7A66] font-semibold transition active:scale-95 flex items-center gap-1 cursor-pointer shadow-xs">
+              <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              <span id="copy-btn-text" class="whitespace-nowrap">คัดลอก</span>
             </button>
           </div>
 

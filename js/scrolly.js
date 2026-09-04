@@ -88,8 +88,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Handle Page Refresh / Reload: ALWAYS start fresh from top with closed envelope
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  const navEntries = performance.getEntriesByType('navigation');
+  const isReload = (navEntries.length > 0 && navEntries[0].type === 'reload') ||
+                   (window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+
+  if (isReload) {
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+
   // Handle direct navigation or returning to a section via URL hash (e.g. #photo-slider-section or #rsvp)
-  if (window.location.hash && window.location.hash.length > 1) {
+  if (!isReload && window.location.hash && window.location.hash.length > 1) {
     try {
       const target = document.querySelector(window.location.hash);
       if (target) {
@@ -101,6 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         setTimeout(() => {
           customSmoothScroll(target, 1000, -15);
+          // CRITICAL: Clean hash from URL bar after landing, so subsequent reloads start fresh at top
+          setTimeout(() => {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+          }, 1200);
         }, 300);
       }
     } catch (err) {
@@ -254,55 +276,84 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
   showSlide(0);
 
-  // Auto transition every 4.5 seconds when visible
-  let sliderTimer = setInterval(() => {
-    const sliderContainer = document.getElementById('photo-slider-section');
-    if (sliderContainer) {
-      const rect = sliderContainer.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        showSlide(currentSlide + 1);
-      }
+  // Responsive Auto-play Timer with IntersectionObserver
+  let sliderTimer = null;
+
+  function stopSlider() {
+    if (sliderTimer) {
+      clearInterval(sliderTimer);
+      clearTimeout(sliderTimer);
+      sliderTimer = null;
     }
-  }, 4500);
+  }
+
+  function startSlider(delay = 3000) {
+    stopSlider();
+    sliderTimer = setTimeout(() => {
+      showSlide(currentSlide + 1);
+      sliderTimer = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 3000);
+    }, delay);
+  }
+
+  // Observer to start auto-advance promptly when photo slider enters viewport
+  const sliderSection = document.getElementById('photo-slider-section');
+  if (sliderSection && 'IntersectionObserver' in window) {
+    const sliderObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Swift first advance after 1.5s so user sees it is dynamic!
+          startSlider(1500);
+        } else {
+          stopSlider();
+        }
+      });
+    }, { threshold: 0.2 });
+    sliderObserver.observe(sliderSection);
+  } else {
+    startSlider(2500);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    showSlide(currentSlide - 1);
+    startSlider(3200);
+  });
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    showSlide(currentSlide + 1);
+    startSlider(3200);
+  });
 
   // Touch Swipe Support for Mobile Experience
-  const sliderBox = document.getElementById('photo-slider-section');
-  if (sliderBox) {
+  if (sliderSection) {
     let startX = 0;
     let endX = 0;
 
-    sliderBox.addEventListener('touchstart', (e) => {
+    sliderSection.addEventListener('touchstart', (e) => {
       startX = e.touches[0].clientX;
-      clearInterval(sliderTimer);
+      stopSlider();
     }, { passive: true });
 
-    sliderBox.addEventListener('touchend', (e) => {
+    sliderSection.addEventListener('touchend', (e) => {
       endX = e.changedTouches[0].clientX;
       const diffX = startX - endX;
-      if (Math.abs(diffX) > 45) {
+      if (Math.abs(diffX) > 40) {
         if (diffX > 0) showSlide(currentSlide + 1); // Swipe left -> Next
         else showSlide(currentSlide - 1); // Swipe right -> Prev
       }
-      // Restart timer
-      sliderTimer = setInterval(() => {
-        const rect = sliderBox.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          showSlide(currentSlide + 1);
-        }
-      }, 4500);
+      startSlider(3200);
     }, { passive: true });
   }
 
   // ============================================================
-  // 8. BACKGROUND AUDIO SYSTEM (sound.mp3)
+  // 8. BACKGROUND AUDIO SYSTEM (sound.MP3) WITH MOBILE UNLOCK
   // ============================================================
   const audioElement = document.getElementById('wedding-audio-player');
   const audioBtn = document.getElementById('floating-music-btn');
   let isAudioOn = false;
+  let audioUnlocked = false;
 
   function playWeddingMusic() {
     const audio = audioElement || document.getElementById('wedding-audio-player');
@@ -313,16 +364,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playPromise !== undefined) {
       playPromise.then(() => {
         isAudioOn = true;
+        audioUnlocked = true;
         if (btn) btn.classList.add('audio-active');
       }).catch((err) => {
-        console.warn('Audio play request blocked by browser policy:', err);
+        console.warn('Audio play request waiting for user gesture:', err);
       });
     }
   }
 
   function stopWeddingMusic() {
-    if (!audioElement) return;
-    audioElement.pause();
+    const audio = audioElement || document.getElementById('wedding-audio-player');
+    if (!audio) return;
+    audio.pause();
     isAudioOn = false;
     if (audioBtn) audioBtn.classList.remove('audio-active');
   }
@@ -336,6 +389,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Mobile Audio Unlock: Catch first user gesture on the document (touchstart or click)
+  function unlockAudioOnGesture() {
+    if (audioUnlocked) return;
+    playWeddingMusic();
+    ['touchstart', 'touchend', 'click', 'pointerdown'].forEach((evt) => {
+      document.removeEventListener(evt, unlockAudioOnGesture);
+    });
+  }
+
+  ['touchstart', 'touchend', 'click', 'pointerdown'].forEach((evt) => {
+    document.addEventListener(evt, unlockAudioOnGesture, { passive: true, once: true });
+  });
 
   // ============================================================
   // 9. PROFESSIONAL SAVE QR CODE TO DEVICE HANDLER
