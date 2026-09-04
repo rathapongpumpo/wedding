@@ -34,8 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Load and Render Existing Wishes from LocalStorage & Google Sheets
-  const STORAGE_KEY = 'wedding_rsvp_film_pei';
+  // 2. Load and Render Existing Wishes from Google Sheets / LocalStorage
+  const STORAGE_KEY = 'wedding_rsvp_live_data';
+  // ล้างแคชข้อมูลตัวอย่างเดิมออกอัตโนมัติ
+  try { localStorage.removeItem('wedding_rsvp_film_pei'); } catch (e) {}
   
   function getStoredRSVP() {
     try {
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const list = getStoredRSVP();
     list.unshift(entry);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-    renderWishes();
+    renderWishes(list);
 
     // ส่งข้อมูลไปยัง Google Sheets แบบ Asynchronous
     if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL.trim() !== '') {
@@ -71,43 +73,36 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(GOOGLE_SHEET_URL)
       .then(res => res.json())
       .then(result => {
-        if (result && result.status === 'success' && Array.isArray(result.data) && result.data.length > 0) {
+        if (result && result.status === 'success' && Array.isArray(result.data)) {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(result.data));
-          renderWishes();
+          renderWishes(result.data);
         }
       })
       .catch(err => console.warn('Fetch remote wishes notice:', err));
   }
   fetchRemoteWishes();
 
-  function renderWishes() {
+  function renderWishes(providedList) {
     if (!guestWishesFeed) return;
-    const list = getStoredRSVP();
-    
-    // Seed initial warm greetings if empty
-    const displayList = list.length > 0 ? list : [
-      {
-        name: "เพื่อนสนิท",
-        attendance: "attending",
-        count: 2,
-        wishes: "ขอแสดงความยินดีกับฟิล์มและเป้ด้วยนะครับ ขอให้รักกันยืนยาว มีความสุขมากๆ!",
-        date: "2026-09-01"
-      },
-      {
-        name: "ครอบครัวและญาติมิตร",
-        attendance: "attending",
-        count: 4,
-        wishes: "ยินดีกับทั้งคู่ด้วยอย่างยิ่ง ขอให้ครอบครัวอบอุ่นและเปี่ยมไปด้วยรอยยิ้มตลอดไป",
-        date: "2026-09-02"
-      }
-    ];
+    const list = providedList || getStoredRSVP();
+    const validWishes = list.filter(item => item && item.wishes && item.wishes.toString().trim() !== '');
 
-    guestWishesFeed.innerHTML = displayList.filter(item => item.wishes && item.wishes.trim()).map(item => `
-      <div class="bg-white/80 p-4 rounded-xl border border-[#E8D5C4] shadow-sm space-y-1.5 transition hover:shadow-md">
+    if (validWishes.length === 0) {
+      guestWishesFeed.innerHTML = `
+        <div class="text-center py-6 px-4 bg-white/60 rounded-xl border border-[#D5C9B8]/50">
+          <p class="text-xs font-thai font-medium text-stone-600">ยังไม่มีคำอวยพรในขณะนี้</p>
+          <p class="text-[10px] font-thai text-stone-400 mt-1">ร่วมเป็นคนแรกที่ส่งคำอวยพรแด่คู่บ่าวสาวด้านบนได้เลยครับ</p>
+        </div>
+      `;
+      return;
+    }
+
+    guestWishesFeed.innerHTML = validWishes.map(item => `
+      <div class="bg-white/85 p-4 rounded-xl border border-[#E8D5C4] shadow-sm space-y-1.5 transition hover:shadow-md">
         <div class="flex items-center justify-between">
-          <span class="font-semibold text-stone-800 text-sm">${escapeHtml(item.name)}</span>
-          <span class="text-[11px] px-2 py-0.5 rounded-full ${item.attendance === 'attending' ? 'bg-[#EBF4F9] text-[#55829C]' : 'bg-stone-100 text-stone-500'} font-medium">
-            ${item.attendance === 'attending' ? `✓ ร่วมงาน (${item.count || 1} ท่าน)` : 'ส่งใจมาร่วม'}
+          <span class="font-semibold text-stone-800 text-sm">${escapeHtml(item.name || 'แขกผู้มีเกียรติ')}</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full ${item.attendance === 'attending' || item.attendance === 'ยินดีมาร่วมงาน' ? 'bg-[#EBF4F9] text-[#55829C]' : 'bg-stone-100 text-stone-500'} font-medium">
+            ${item.attendance === 'attending' || item.attendance === 'ยินดีมาร่วมงาน' ? `✓ ร่วมงาน (${item.count || 1} ท่าน)` : 'ส่งใจมาร่วม'}
           </span>
         </div>
         <p class="text-xs text-stone-600 font-light leading-relaxed">"${escapeHtml(item.wishes)}"</p>
