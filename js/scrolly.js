@@ -317,4 +317,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ============================================================
+  // 9. PROFESSIONAL SAVE QR CODE TO DEVICE HANDLER
+  // ============================================================
+  const saveQrBtn = document.getElementById('save-qr-btn');
+  if (saveQrBtn) {
+    saveQrBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const btnText = document.getElementById('save-qr-btn-text');
+      const iconDl = document.getElementById('save-qr-icon-dl');
+      const iconCheck = document.getElementById('save-qr-icon-check');
+
+      try {
+        const response = await fetch('images/QR.jpg');
+        if (!response.ok) throw new Error('Fetch failed');
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+
+        const downloadLink = document.createElement('a');
+        downloadLink.style.display = 'none';
+        downloadLink.href = blobUrl;
+        downloadLink.download = 'PromptPay_QR_Preeyaporn.jpg';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        
+        setTimeout(() => {
+          document.body.removeChild(downloadLink);
+          window.URL.revokeObjectURL(blobUrl);
+        }, 1500);
+
+        // Success state feedback
+        if (btnText) btnText.textContent = 'บันทึกภาพสำเร็จแล้ว ✓';
+        if (iconDl) iconDl.classList.add('hidden');
+        if (iconCheck) iconCheck.classList.remove('hidden');
+        saveQrBtn.classList.add('bg-[#52634D]');
+
+        setTimeout(() => {
+          if (btnText) btnText.textContent = 'บันทึกภาพ QR Code';
+          if (iconDl) iconDl.classList.remove('hidden');
+          if (iconCheck) iconCheck.classList.add('hidden');
+          saveQrBtn.classList.remove('bg-[#52634D]');
+        }, 2500);
+
+      } catch (err) {
+        // Fallback for strict browser environments or direct download
+        const fallbackLink = document.createElement('a');
+        fallbackLink.href = 'images/QR.jpg';
+        fallbackLink.download = 'PromptPay_QR_Preeyaporn.jpg';
+        fallbackLink.target = '_blank';
+        document.body.appendChild(fallbackLink);
+        fallbackLink.click();
+        document.body.removeChild(fallbackLink);
+
+        if (btnText) btnText.textContent = 'บันทึกภาพสำเร็จแล้ว ✓';
+        setTimeout(() => {
+          if (btnText) btnText.textContent = 'บันทึกภาพ QR Code';
+        }, 2500);
+      }
+    });
+  }
+
 });
