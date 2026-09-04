@@ -1,12 +1,19 @@
 // js/rsvp.js - Interactive RSVP & Blessing System for Film & Pei
 
+// ============================================================
+// GOOGLE SHEETS CONFIGURATION
+// นำ Web App URL ที่ได้จากการ Deploy ใน Google Apps Script มาใส่ที่นี่
+// (หากยังไม่ใส่ ข้อมูลจะถูกบันทึกใน LocalStorage ของเบราว์เซอร์อัตโนมัติ)
+// ============================================================
+const GOOGLE_SHEET_URL = '';
+
 document.addEventListener('DOMContentLoaded', () => {
   const rsvpForm = document.getElementById('rsvp-form');
   const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
   const attendeeCountContainer = document.getElementById('attendee-count-container');
   const attendeeCountInput = document.getElementById('attendee-count');
   const rsvpSuccessCard = document.getElementById('rsvp-success-card');
-  const rsvpFormContainer = document.getElementById('rsvp-form-container');
+  const rsvpFormContainer = document.getElementById('rsvp-form-container') || rsvpForm;
   const guestWishesFeed = document.getElementById('guest-wishes-feed');
   const exportCsvBtn = document.getElementById('export-rsvp-csv');
 
@@ -27,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Load and Render Existing Wishes from LocalStorage
+  // 2. Load and Render Existing Wishes from LocalStorage & Google Sheets
   const STORAGE_KEY = 'wedding_rsvp_film_pei';
   
   function getStoredRSVP() {
@@ -44,7 +51,34 @@ document.addEventListener('DOMContentLoaded', () => {
     list.unshift(entry);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
     renderWishes();
+
+    // ส่งข้อมูลไปยัง Google Sheets แบบ Asynchronous
+    if (GOOGLE_SHEET_URL && GOOGLE_SHEET_URL.trim() !== '') {
+      fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(entry)
+      })
+      .then(res => res.json())
+      .then(data => console.log('Synced to Google Sheets:', data))
+      .catch(err => console.warn('Google Sheets sync notice:', err));
+    }
   }
+
+  // ดึงคำอวยพรล่าสุดจาก Google Sheets มาแสดง
+  function fetchRemoteWishes() {
+    if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.trim() === '') return;
+    fetch(GOOGLE_SHEET_URL)
+      .then(res => res.json())
+      .then(result => {
+        if (result && result.status === 'success' && Array.isArray(result.data) && result.data.length > 0) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(result.data));
+          renderWishes();
+        }
+      })
+      .catch(err => console.warn('Fetch remote wishes notice:', err));
+  }
+  fetchRemoteWishes();
 
   function renderWishes() {
     if (!guestWishesFeed) return;
