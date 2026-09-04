@@ -44,22 +44,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================================
-  // 2. ENVELOPE OPENING & CINEMATIC TRANSITION
+  // 2. ENVELOPE OPENING & CINEMATIC TRANSITION & INSTANT MUSIC
   // ============================================================
   const envelope = document.getElementById('wedding-envelope');
   const openTriggerBtn = document.getElementById('open-envelope-btn');
   const waxSeal = document.getElementById('wax-seal-btn');
   const detailsSection = document.getElementById('the-details-section');
 
-  function triggerEnvelopeOpen() {
+  function triggerEnvelopeOpen(e) {
+    if (e) {
+      // Don't prevent default on touch unless needed
+      if (e.type === 'click') e.stopPropagation();
+    }
+    
+    // 1. Play background music immediately within the user gesture stack
+    playWeddingMusic();
+
     if (!envelope) return;
     if (envelope.classList.contains('envelope-open')) return;
     envelope.classList.add('envelope-open');
 
-    // Trigger audio smoothly (sound.mp3)
-    playWeddingMusic();
-
-    // Silky smooth scroll to "The Details" section after admiring the photo
+    // 2. Silky smooth scroll to "The Details" section after admiring the photo
     setTimeout(() => {
       if (detailsSection) {
         customSmoothScroll(detailsSection, 2200, -10);
@@ -67,15 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   }
 
-  if (envelope) envelope.addEventListener('click', triggerEnvelopeOpen);
-  if (openTriggerBtn) openTriggerBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    triggerEnvelopeOpen();
-  });
-  if (waxSeal) waxSeal.addEventListener('click', (e) => {
-    e.stopPropagation();
-    triggerEnvelopeOpen();
-  });
+  if (envelope) {
+    envelope.addEventListener('click', triggerEnvelopeOpen);
+  }
+  if (openTriggerBtn) {
+    openTriggerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerEnvelopeOpen(e);
+    });
+  }
+  if (waxSeal) {
+    waxSeal.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerEnvelopeOpen(e);
+    });
+  }
 
   // ============================================================
   // 3. FALLING FLORAL PETALS AMBIENT SYSTEM
@@ -273,14 +284,19 @@ document.addEventListener('DOMContentLoaded', () => {
   let isAudioOn = false;
 
   function playWeddingMusic() {
-    if (!audioElement) return;
-    audioElement.volume = 0.6;
-    audioElement.play().then(() => {
-      isAudioOn = true;
-      if (audioBtn) audioBtn.classList.add('audio-active');
-    }).catch((err) => {
-      console.log('Audio autoplay prevented by browser policy:', err);
-    });
+    const audio = audioElement || document.getElementById('wedding-audio-player');
+    const btn = audioBtn || document.getElementById('floating-music-btn');
+    if (!audio) return;
+    audio.volume = 0.65;
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        isAudioOn = true;
+        if (btn) btn.classList.add('audio-active');
+      }).catch((err) => {
+        console.warn('Audio play request blocked by browser policy:', err);
+      });
+    }
   }
 
   function stopWeddingMusic() {

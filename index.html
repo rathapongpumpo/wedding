@@ -48,7 +48,10 @@
 <body class="luxury-backdrop text-[#2D2B28] antialiased min-h-screen py-0 sm:py-8">
 
   <!-- Audio Player (sound.mp3) -->
-  <audio id="wedding-audio-player" src="sound.mp3" loop preload="auto"></audio>
+  <audio id="wedding-audio-player" loop preload="auto" playsinline>
+    <source src="sound.mp3" type="audio/mpeg">
+    <source src="sound.MP3" type="audio/mpeg">
+  </audio>
 
   <!-- Floating Audio Player -->
   <button id="floating-music-btn" class="floating-audio-btn group" title="เปิด/ปิดเสียงเพลง" aria-label="Toggle Wedding Music">
@@ -275,7 +278,7 @@
     <!-- ============================================================ -->
     <!-- SCREEN 2: THE DETAILS (Vintage Ornate Baroque Frame)         -->
     <!-- ============================================================ -->
-    <section id="the-details-section" class="py-12 px-6 text-center bg-[#F8F5F0] border-b border-stone-200">
+    <section id="the-details-section" class="py-12 px-6 text-center bg-[#E8E0D4] border-b border-[#D5C9B8]">
       
       <p class="text-[10px] tracking-[0.3em] uppercase text-[#6B7A66] font-semibold font-modern mb-1">
         Wedding Celebration
@@ -284,8 +287,8 @@
         The Details
       </h2>
 
-      <!-- Antique French Lace Louis Frame with Video -->
-      <div class="relative w-80 max-w-[94%] mx-auto mb-6 select-none">
+      <!-- Antique French Lace Louis Frame with Video (Enlarged for Greater Presence) -->
+      <div class="relative w-[345px] sm:w-[380px] max-w-[96%] mx-auto mb-6 select-none">
         
         <!-- Video Container with Frame Aspect Ratio (896x1200) -->
         <div class="relative w-full aspect-[896/1200] overflow-hidden">
@@ -310,25 +313,25 @@
         <p class="text-sm font-serif-luxury tracking-[0.25em] text-[#2D2B28] uppercase font-bold">
           FILM & PEI
         </p>
-        <p class="text-xs text-stone-500 font-serif-luxury tracking-widest">
+        <p class="text-xs text-stone-600 font-serif-luxury tracking-widest">
           20 . 11 . 2026
         </p>
         <div class="text-[#C5A869] text-xs pt-1">♡</div>
       </div>
 
-      <!-- Two-Column Ceremony & Reception Card (Shifted down for breathing room) -->
-      <div class="grid grid-cols-2 gap-3 bg-white p-4 sm:p-5 rounded-2xl border border-[#EFEAE1] shadow-sm text-left mt-6 mb-2">
-        <div class="border-r border-stone-200 pr-2">
+      <!-- Two-Column Ceremony & Reception Card (Warm Ivory Stationery Paper) -->
+      <div class="grid grid-cols-2 gap-3 bg-[#F4EFE6] p-4 sm:p-5 rounded-2xl border border-[#D5C9B8] shadow-sm text-left mt-6 mb-2">
+        <div class="border-r border-[#D5C9B8] pr-2">
           <p class="text-[10px] font-modern uppercase tracking-widest text-[#6B7A66] font-semibold">CEREMONY</p>
           <p class="text-xs font-bold text-stone-800 font-serif-luxury mt-0.5">16.30 น.</p>
           <p class="text-[11px] text-stone-600 font-medium font-thai">โอละเข่ง : Olakeng</p>
-          <p class="text-[9px] text-stone-400 font-thai">นนทบุรี</p>
+          <p class="text-[9px] text-stone-500 font-thai">นนทบุรี</p>
         </div>
         <div class="pl-1">
           <p class="text-[10px] font-modern uppercase tracking-widest text-[#6B7A66] font-semibold">RECEPTION</p>
           <p class="text-xs font-bold text-stone-800 font-serif-luxury mt-0.5">17.30 น.</p>
           <p class="text-[11px] text-stone-600 font-medium font-thai">โอละเข่ง : Olakeng</p>
-          <p class="text-[9px] text-stone-400 font-thai">นนทบุรี</p>
+          <p class="text-[9px] text-stone-500 font-thai">นนทบุรี</p>
         </div>
       </div>
 
@@ -503,7 +506,7 @@
     <!-- ============================================================ -->
     <!-- SCREEN 4: PRE-WEDDING PHOTO SHOWCASE (Photos 7, 8, 9 & All) -->
     <!-- ============================================================ -->
-    <section id="photo-slider-section" class="py-12 px-6 bg-[#F8F5F0] border-b border-stone-200 text-center">
+    <section id="photo-slider-section" class="py-12 px-6 bg-[#E8E0D4] border-b border-[#D5C9B8] text-center">
       
       <p class="text-[10px] tracking-[0.3em] uppercase text-[#6B7A66] font-semibold font-modern mb-1">
         Photo Gallery
@@ -570,12 +573,10 @@
 
     </section>
 
-
-
     <!-- ============================================================ -->
     <!-- SCREEN 6: DRESS CODE & VENUE LOCATION (MATCHING EXSAM)       -->
     <!-- ============================================================ -->
-    <section class="py-12 px-6 bg-[#F8F5F0] border-b border-stone-200 text-center">
+    <section class="py-12 px-6 bg-[#E8E0D4] border-b border-[#D5C9B8] text-center">
       
       <!-- Dress Code Section -->
       <div class="reveal-on-scroll max-w-sm mx-auto mb-10 pb-8 border-b border-[#C5A869]/30">
@@ -643,11 +644,12 @@
         <h3 class="text-3xl font-alex text-[#2D2B28] mb-1">
           Where To Stay & Venue
         </h3>
-        <p class="text-xs text-stone-500 font-thai mb-4">
+        <p class="text-xs text-stone-600 font-thai mb-4">
           สถานที่จัดงานในบรรยากาศสวนธรรมชาติ นนทบุรี
         </p>
 
-        <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm space-y-2 mb-5 text-left">
+        <!-- Venue Info Card -->
+        <div class="bg-[#F4EFE6] p-4 rounded-2xl border border-[#D5C9B8] shadow-sm space-y-2 mb-4 text-left">
           <p class="text-xs text-stone-800 font-thai flex items-center gap-2">
             <svg class="w-4 h-4 text-[#6B7A66] shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -663,7 +665,16 @@
           </p>
         </div>
 
-        <a href="https://maps.app.goo.gl/rdZy7JMoDDhcY9xr5" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full bg-[#6B7A66] hover:bg-[#556350] text-white text-[10px] font-modern uppercase tracking-[0.2em] font-medium shadow-sm transition">
+        <!-- Venue Photo: โอละเข่ง (Location.jpg placed before Open Map button) -->
+        <div class="mb-5 rounded-2xl overflow-hidden border border-[#D5C9B8] shadow-sm bg-[#F4EFE6]">
+          <img src="images/Location.jpg" alt="บรรยากาศสถานที่จัดงาน โอละเข่ง (Olakeng)" class="w-full h-48 sm:h-56 object-cover object-center block">
+          <div class="py-2.5 px-3 bg-[#EBE3D7] text-center border-t border-[#D5C9B8]">
+            <p class="text-[11px] font-thai text-stone-700 font-medium">โอละเข่ง : Olakeng • นนทบุรี</p>
+          </div>
+        </div>
+
+        <!-- Map Navigation Button -->
+        <a href="https://maps.app.goo.gl/rdZy7JMoDDhcY9xr5" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#6B7A66] hover:bg-[#556350] text-white text-[10px] font-modern uppercase tracking-[0.2em] font-medium shadow-sm transition">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
           </svg>
@@ -676,24 +687,17 @@
     <!-- ============================================================ -->
     <!-- SCREEN 7: KINDLY REPLY (INTERACTIVE DYNAMIC RSVP FORM)        -->
     <!-- ============================================================ -->
-    <section class="py-12 px-6 bg-[#FAF7F2] text-center">
+    <section class="py-12 px-6 bg-[#DFD7CB] border-b border-[#D5C9B8] text-center">
       
-      <!-- Mini Frame with Couple Photo (Matches exsam.avif Kindly Reply) -->
-      <div class="w-20 h-24 mx-auto baroque-frame mb-3">
-        <div class="baroque-frame-inner">
-          <img src="images/IMG_7815.JPG" alt="Film & Pei Mini" class="w-full h-full object-cover rounded">
-        </div>
-      </div>
-
       <h2 class="text-4xl font-script text-[#2D2B28] mb-1">
         Kindly Reply
       </h2>
-      <p class="text-[10px] text-stone-500 font-modern tracking-widest uppercase mb-6">
+      <p class="text-[10px] text-stone-600 font-modern tracking-widest uppercase mb-6">
         Kindly reply by the 1st of November, 2026
       </p>
 
-      <!-- Form Card -->
-      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm text-left max-w-sm mx-auto">
+      <!-- Form Card (Warm Ivory Stationery Paper) -->
+      <div class="bg-[#F4EFE6] p-5 rounded-2xl border border-[#D5C9B8] shadow-sm text-left max-w-sm mx-auto">
         
         <form id="rsvp-form" class="space-y-4 text-xs font-thai">
           
@@ -702,7 +706,7 @@
             <label for="guest-name" class="block font-bold text-stone-700 uppercase tracking-wider mb-1">
               ชื่อของท่าน <span class="text-rose-500">*</span>
             </label>
-            <input type="text" id="guest-name" required placeholder="ระบุชื่อ..." class="w-full p-2.5 border border-stone-300 rounded-xl outline-none focus:border-[#6B7A66] bg-stone-50">
+            <input type="text" id="guest-name" required placeholder="ระบุชื่อ..." class="w-full p-2.5 border border-[#D5C9B8] rounded-xl outline-none focus:border-[#6B7A66] bg-white/90">
           </div>
 
           <!-- Attendance Radio -->
@@ -711,11 +715,11 @@
               การเข้าร่วมงาน <span class="text-rose-500">*</span>
             </label>
             <div class="grid grid-cols-2 gap-2">
-              <label class="flex items-center gap-2 p-2.5 border border-stone-300 rounded-xl bg-stone-50 cursor-pointer hover:border-[#6B7A66]">
+              <label class="flex items-center gap-2 p-2.5 border border-[#D5C9B8] rounded-xl bg-white/90 cursor-pointer hover:border-[#6B7A66]">
                 <input type="radio" name="attendance" value="attending" checked class="text-[#6B7A66]">
                 <span class="font-medium text-stone-800 text-[11px]">ยินดีมาร่วมงาน</span>
               </label>
-              <label class="flex items-center gap-2 p-2.5 border border-stone-300 rounded-xl bg-stone-50 cursor-pointer hover:border-[#6B7A66]">
+              <label class="flex items-center gap-2 p-2.5 border border-[#D5C9B8] rounded-xl bg-white/90 cursor-pointer hover:border-[#6B7A66]">
                 <input type="radio" name="attendance" value="declined" class="text-[#6B7A66]">
                 <span class="text-stone-600 text-[11px]">ขออภัย ไม่สะดวก</span>
               </label>
@@ -727,7 +731,7 @@
             <label for="attendee-count" class="block font-bold text-[#6B7A66] uppercase tracking-wider mb-1">
               จำนวนผู้ร่วมงานทั้งหมด (รวมตัวท่าน) <span class="text-rose-500">*</span>
             </label>
-            <select id="attendee-count" class="w-full p-2.5 border border-[#6B7A66] rounded-xl outline-none bg-[#F8F5F0] font-medium">
+            <select id="attendee-count" class="w-full p-2.5 border border-[#6B7A66] rounded-xl outline-none bg-white/90 font-medium">
               <option value="1">1 ท่าน</option>
               <option value="2" selected>2 ท่าน</option>
               <option value="3">3 ท่าน</option>
@@ -741,7 +745,7 @@
             <label for="guest-wishes" class="block font-bold text-stone-700 uppercase tracking-wider mb-1">
               คำอวยพรแด่คู่บ่าวสาว (Film & Pei)
             </label>
-            <textarea id="guest-wishes" rows="2" placeholder="ส่งความปรารถนาดีและคำอวยพร..." class="w-full p-2.5 border border-stone-300 rounded-xl outline-none focus:border-[#6B7A66] bg-stone-50"></textarea>
+            <textarea id="guest-wishes" rows="2" placeholder="ส่งความปรารถนาดีและคำอวยพร..." class="w-full p-2.5 border border-[#D5C9B8] rounded-xl outline-none focus:border-[#6B7A66] bg-white/90"></textarea>
           </div>
 
           <!-- Submit Button -->
@@ -756,7 +760,7 @@
             ✓
           </div>
           <h4 class="font-serif-luxury text-xl font-bold text-stone-900">ขอบคุณสำหรับการตอบรับ!</h4>
-          <p class="text-xs text-stone-500 font-thai">เราได้รับข้อมูลของคุณ <span id="success-guest-name" class="font-bold"></span> เรียบร้อยแล้ว</p>
+          <p class="text-xs text-stone-600 font-thai">เราได้รับข้อมูลของคุณ <span id="success-guest-name" class="font-bold"></span> เรียบร้อยแล้ว</p>
         </div>
 
       </div>
@@ -774,7 +778,7 @@
     <!-- ============================================================ -->
     <!-- SCREEN 8: WEDDING GIFT & QR BLESSING                         -->
     <!-- ============================================================ -->
-    <section class="py-12 px-6 bg-[#FAF7F2] border-t border-stone-200/80 text-center">
+    <section class="py-12 px-6 bg-[#E8E0D4] border-t border-[#D5C9B8] text-center">
       <div class="max-w-sm mx-auto">
         
         <p class="text-[10px] tracking-[0.3em] uppercase text-[#6B7A66] font-semibold font-modern mb-1">
@@ -783,37 +787,35 @@
         <h3 class="text-3xl font-alex text-[#2D2B28] mb-2">
           ของขวัญแด่คู่บ่าวสาว
         </h3>
-        <p class="text-xs text-stone-500 font-thai mb-6">
+        <p class="text-xs text-stone-600 font-thai mb-6 leading-relaxed">
           หากท่านประสงค์จะร่วมแสดงความยินดีและมอบของขวัญแด่คู่บ่าวสาว<br>สามารถสแกนผ่าน QR Code พร้อมเพย์ด้านล่างนี้
         </p>
 
-        <!-- QR Card Frame with Elegant Accents -->
-        <div class="bg-white p-6 rounded-2xl border border-[#DFCA98]/60 shadow-sm relative overflow-hidden">
+        <!-- Modern Luxury QR Blessing Card -->
+        <div class="bg-gradient-to-b from-[#FAF6F0] to-[#EFE8DD] p-6 sm:p-7 rounded-2xl border border-[#D5C9B8] shadow-[0_8px_24px_rgba(45,43,40,0.06)] relative overflow-hidden">
           
-          <!-- Delicate Gold Accent Line -->
-          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#DFCA98] via-[#C5A869] to-[#DFCA98]"></div>
+          <!-- Subtle Top Gold Hairline -->
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#C5A869] to-transparent"></div>
 
-          <div class="mb-4">
-            <span class="inline-block px-3 py-1 bg-[#F5F2EB] text-[#6B7A66] text-[10px] font-medium font-modern uppercase tracking-wider rounded-full mb-2">
-              PromptPay พร้อมเพย์
-            </span>
-            <p class="text-[11px] text-stone-400 font-thai">ชื่อบัญชี</p>
-            <p class="text-base font-thai font-bold text-stone-800">
+          <!-- Account Name in Modern Luxury Typography (Without PromptPay badge & ชื่อบัญชี label) -->
+          <div class="mb-4 text-center">
+            <h4 class="text-xl font-thai font-bold text-[#2D2B28] tracking-wide mb-1.5">
               ปรียาภรณ์ ชุมนุมราษฎร์
-            </p>
+            </h4>
+            <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C5A869] to-transparent mx-auto"></div>
           </div>
 
           <!-- QR Code Image -->
-          <div class="w-56 mx-auto p-3.5 bg-[#FAF7F2] rounded-xl border border-stone-200 shadow-inner">
-            <img src="images/QR.jpg" alt="QR Code พร้อมเพย์ - ปรียาภรณ์ ชุมนุมราษฎร์" class="w-full h-auto rounded-lg block">
+          <div class="w-52 max-w-full mx-auto p-3 bg-white rounded-xl border border-[#DFCA98]/50 shadow-sm">
+            <img src="images/QR.jpg" alt="QR Code - ปรียาภรณ์ ชุมนุมราษฎร์" class="w-full h-auto rounded-lg block">
           </div>
 
           <!-- PromptPay Info -->
-          <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-center gap-1.5">
-            <span class="text-xs font-mono text-stone-600 font-medium">หมายเลขพร้อมเพย์: xxx-xxx-6617</span>
+          <div class="mt-4 pt-3 border-t border-[#E4DCD0] flex items-center justify-center gap-1.5">
+            <span class="text-xs font-mono text-stone-600 font-medium tracking-wider">หมายเลขพร้อมเพย์: xxx-xxx-6617</span>
           </div>
 
-          <p class="text-[11px] text-stone-400 font-thai mt-2">
+          <p class="text-[11px] text-stone-500 font-thai mt-2">
             ขอขอบพระคุณทุกคำอวยพรและความปรารถนาดี
           </p>
 

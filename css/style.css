@@ -4,9 +4,11 @@
 :root {
   --color-sage: #6B7A66;
   --color-sage-dark: #556350;
-  --color-sage-light: #EBF0E9;
-  --color-ivory: #F8F5F0;
-  --color-linen: #EFEAE1;
+  --color-sage-light: #E0D9CD;
+  --color-ivory: #E8E0D4;       /* Warm Vintage Linen matching exsam.avif */
+  --color-linen: #DFD7CB;       /* Antique Parchment tone */
+  --color-card: #F4EFE6;        /* Warm Ivory Stationery card */
+  --color-card-border: #D5C9B8; /* Warm paper border */
   --color-gold: #C5A869;
   --color-gold-dark: #9E8347;
   --color-gold-light: #E8DCB8;
@@ -58,7 +60,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #EFEAE1;
+  background-color: #D6CCC0;
   color: var(--color-charcoal);
   font-family: 'Prompt', 'Montserrat', sans-serif;
   line-height: 1.6;
@@ -69,10 +71,10 @@ body {
 
 /* Luxury Fabric Background Texture */
 .luxury-backdrop {
-  background-color: #EFEAE1;
+  background-color: #D3C9BC;
   background-image: 
-    radial-gradient(ellipse at top left, rgba(255,255,255,0.6) 0%, transparent 60%),
-    radial-gradient(ellipse at bottom right, rgba(200, 190, 175, 0.4) 0%, transparent 60%);
+    radial-gradient(ellipse at top left, rgba(255,255,255,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(165, 150, 130, 0.4) 0%, transparent 60%);
   min-height: 100vh;
   width: 100%;
   overflow-x: clip;
